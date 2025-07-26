@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoC Decoration Checker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            padding: 30px;
+            text-align: center;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .input-section {
+            padding: 30px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+            font-size: 1.1em;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            resize: vertical;
+            transition: border-color 0.3s ease;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #4facfe;
+            box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .analyze-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1em;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .analyze-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .analyze-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .results-section {
+            padding: 30px;
+            display: none;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(240, 147, 251, 0.3);
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .filter-controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid #ddd;
+            background: white;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn.active {
+            background: #4facfe;
+            border-color: #4facfe;
+            color: white;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+            padding: 10px 15px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            font-size: 16px;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #4facfe;
+        }
+
+        .decorations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .decoration-card {
+            background: white;
+            border-radius: 15px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .decoration-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .decoration-card.owned {
+            border-color: #4caf50;
+            background: linear-gradient(135deg, #c8e6c9 0%, #a5d6a7 100%);
+        }
+
+        .decoration-card.missing {
+            border-color: #f44336;
+            background: linear-gradient(135deg, #ffcdd2 0%, #ef9a9a 100%);
+            opacity: 0.7;
+        }
+
+        .decoration-image {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            color: #666;
+            transition: all 0.3s ease;
+            object-fit: contain; /* Ensure image fits without distortion */
+        }
+
+        .decoration-card.owned .decoration-image {
+            background: rgba(76, 175, 80, 0.2);
+            color: #2e7d32;
+        }
+
+        .decoration-card.missing .decoration-image {
+            background: rgba(244, 67, 54, 0.2);
+            color: #c62828;
+            filter: grayscale(100%);
+        }
+
+        .decoration-name {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .decoration-code {
+            font-size: 0.8em;
+            color: #666;
+            font-family: 'Courier New', monospace;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .status-owned {
+            background: #4caf50;
+            color: white;
+        }
+
+        .status-missing {
+            background: #f44336;
+            color: white;
+        }
+
+        .error-message {
+            background: #ffebee;
+            border: 1px solid #f44336;
+            color: #c62828;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #4facfe;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .decorations-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 15px;
+            }
+            
+            .filter-controls {
+                flex-direction: column;
+            }
+            
+            .search-box {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏰 CoC Decoration Checker</h1>
+            <p>Paste your JSON data to see which decorations you own!</p>
+        </div>
+
+        <div class="input-section">
+            <div class="input-group">
+                <label for="jsonInput">Paste your JSON data here:</label>
+                <textarea id="jsonInput" placeholder='Paste your Clash of Clans JSON data here...'></textarea>
+            </div>
+            <div class="btn-container">
+                <button class="analyze-btn" onclick="analyzeDecorations()">🔍 Analyze Decorations</button>
+            </div>
+            <div id="errorMessage"></div>
+        </div>
+
+        <div class="results-section" id="resultsSection">
+            <div class="stats" id="statsContainer"></div>
+            
+            <div class="filter-controls">
+                <button class="filter-btn active" onclick="filterDecorations('all', event)">All</button>
+                <button class="filter-btn" onclick="filterDecorations('owned', event)">Owned</button>
+                <button class="filter-btn" onclick="filterDecorations('missing', event)">Missing</button>
+                <input type="text" class="search-box" id="searchBox" placeholder="🔍 Search decorations..." oninput="searchDecorations()">
+            </div>
+            
+            <div class="decorations-grid" id="decorationsGrid"></div>
+        </div>
+    </div>
+
+    <script>
+        // Decoration data from the CSV with image paths
+        const decorationData = {
+            18000067: { name: "Barbarian Statue", image: "images/decorations/barbarian_statue.png" },
+            18000001: { name: "Torch", image: "images/decorations/torch.png" },
+            18000002: { name: "Goblin Pole", image: "images/decorations/Decoration_HV_Goblin_Explorer.png" },
+            18000003: { name: "White Flag", image: "images/decorations/Decoration_HV_White_Flag.png" },
+            18000004: { name: "Skull Flag", image: "images/decorations/Decoration_HV_Pirate_Flag.png" },
+            18000005: { name: "Sunflower Bed", image: "images/decorations/Decoration_HV_Sunflower_Bed.png" },
+            18000006: { name: "Cornflower Bed", image: "images/decorations/Decoration_HV_Cornflower_Bed.png" },
+            18000007: { name: "Windmeter", image: "images/decorations/Decoration_HV_Weather_Vane.png" },
+            18000008: { name: "Downarrow Flag", image: "images/decorations/Decoration_HV_Rally_Flag.png" },
+            18000009: { name: "Uparrow Flag", image: "images/decorations/Decoration_HV_Point_Flag.png" },
+            18000010: { name: "Skull Altar", image: "images/decorations/Decoration_HV_Ancient_Skull.png" },
+            18000033: { name: "Pekka Statue", image: "images/decorations/Decoration_HV_PEKKA_Statue.png" },
+            18000037: { name: "Bk Statue", image: "images/decorations/Decoration_HV_Barbarian_King_Statue.png" },
+            18000038: { name: "Torch Builder Base", image: "images/decorations/torch.png" },
+            18000039: { name: "Tree", image: "images/decorations/Obstacle_HV_Small_Tree.png" },
+            18000040: { name: "Tree", image: "images/decorations/Obstacle_HV_Large_Tree.png" },
+            18000041: { name: "Ancient Barbarian Statue", image: "images/decorations/ancient_barbarian_statue.png" },
+            18000042: { name: "Stone Path", image: "images/decorations/Decoration_BB_Stone_Path.png" },
+            18000043: { name: "Archer Queen Statue", image: "images/decorations/Decoration_BB_Archer_Queen_Statue.png" },
+            18000044: { name: "Target", image: "images/decorations/Decoration_BB_Target.png" },
+            18000045: { name: "Fireplace", image: "images/decorations/Decoration_BB_Bonfire.png" },
+            18000046: { name: "Builder Statue", image: "images/decorations/Decoration_HV_Builder_Statue.png" },
+            18000047: { name: "The Champion Statue", image: "images/decorations/Decoration_HV_The_Champion_Statue.png" },
+            18000048: { name: "The Master Statue", image: "images/decorations/Decoration_HV_The_Master_Statue.png" },
+            18000049: { name: "The Contender Statue", image: "images/decorations/Decoration_HV_The_Contender_Statue.png" },
+            18000050: { name: "The Challenger Statue", image: "images/decorations/Decoration_HV_The_Challenger_Statue.png" },
+            18000051: { name: "The Warrior Statue", image: "images/decorations/Decoration_HV_The_Warrior_Statue.png" },
+            18000052: { name: "Golden Hog", image: "images/decorations/Decoration_HV_ Golden_Piggy_Bank.png" },
+            18000053: { name: "Firecracker", image: "images/decorations/Obstacle_HV_Firework_Stash.png" },
+            18000054: { name: "Snowman", image: "images/decorations/Decoration_HV_Snowman.png" },
+            18000056: { name: "Battlemachine", image: "images/decorations/Decoration_BB_Battle_Machine_Statue.png" },
+            18000057: { name: "Dragon Statue", image: "images/decorations/Decoration_HV_Dragon_Statue.png" },
+            18000058: { name: "Golden Goblin", image: "images/decorations/Decoration_HV_Golden_Poet.png" },
+            18000059: { name: "Super Statue", image: "images/decorations/Decoration_HV_Super_Statue.png" },
+            18000060: { name: "Short Film Statue", image: "images/decorations/short_film_statue.png" },
+            18000061: { name: "Aniversary Fountain", image: "images/decorations/Decoration_HV_Anniversary_Fountain.png" },
+            18000062: { name: "Clockwork Statue", image: "images/decorations/Decoration_HV_Clockwork_Statue.png" },
+            18000063: { name: "A piece of Birthday Cake", image: "images/decorations/Decoration_HV_A_Piece_Of_Birthday_Cake.png" },
+            18000064: { name: "Pirate Anchor", image: "images/decorations/Decoration_HV_Anchor_Statue.png" },
+            18000065: { name: "Logmas Tree", image: "images/decorations/Decoration_HV_Logmas_Tree.png" },
+            18000066: { name: "Firework Fanboy", image: "images/decorations/Decoration_HV_Firework_Fanboy.png" },
+            18000068: { name: "9year Birthday Statue", image: "images/decorations/Obstacle_HV_9th_Anniversary_Cake.png" },
+            18000069: { name: "Wizard Statue", image: "images/decorations/Decoration_HV_Wizard_Statue.png" },
+            18000070: { name: "10year Birthday Statue", image: "images/decorations/Obstacle_HV_10th_Anniversary_Cake.png" },
+            18000071: { name: "Clash Fest 22 Statue", image: "images/decorations/clash_fest_22_statue.png" },
+            18000072: { name: "Clashmas Tree 2022", image: "images/decorations/Obstacle_HV_Clashmas_Tree_2022.png" },
+            18000073: { name: "Statue Lny 2023", image: "images/decorations/statue_lny_2023.png" },
+            18000074: { name: "Deco Painted Baby Dragon", image: "images/decorations/deco_painted_baby_dragon.png" },
+            18000075: { name: "Deco Dark Ages Dragon", image: "images/decorations/deco_dark_ages_dragon.png" },
+            18000076: { name: "Fireplace", image: "images/decorations/Decoration_BB_Bonfire_2.png" },
+            18000077: { name: "Torch Builder Base Back", image: "images/decorations/torch_BBB.png" },
+            18000078: { name: "Target", image: "images/decorations/Decoration_BB_Target_2.png" },
+            18000079: { name: "Books Of Clash", image: "images/decorations/Decoration_HV_Books_of_Clash_Statue_active.png" },
+            18000080: { name: "Master Builder's Return", image: "images/decorations/Decoration_BB_Master_Builder_Return.png" },
+            18000081: { name: "Deco Goblin Chest", image: "images/decorations/deco_goblin_chest.png" },
+            18000082: { name: "Deco Goblin Cart", image: "images/decorations/deco_goblin_cart.png" },
+            18000089: { name: "Deco Goblin Cellar", image: "images/decorations/deco_goblin_cellar.png" },
+            18000090: { name: "Deco Goblin Dragon Statue", image: "images/decorations/Decoration_HV_Goblin_Dragon_Statue.png" },
+            18000091: { name: "Deco Goblin Barrel", image: "images/decorations/deco_goblin_barrel.png" },
+            18000092: { name: "Deco Cwl Hammer", image: "images/decorations/deco_cwl_hammer.png" },
+            18000093: { name: "Deco Cwl Shield", image: "images/decorations/deco_cwl_shield.png" },
+            18000094: { name: "Deco Razer Promo", image: "images/decorations/deco_razer_promo.png" },
+            18000095: { name: "Deco Flexing Barb", image: "images/decorations/deco_flexing_barb.png" },
+            18000096: { name: "Deco Coffin", image: "images/decorations/Decoration_HV_Coffin.png" },
+            18000097: { name: "Deco Clown", image: "images/decorations/Decoration_HV_Hoggywise.png" },
+            18000098: { name: "Deco Dead Jakuzzi", image: "images/decorations/deco_dead_jakuzzi.png" },
+            18000099: { name: "Deco Scarecrow", image: "images/decorations/deco_scarecrow.png" },
+            18000100: { name: "Clashoween Building", image: "images/decorations/clashoween_building.png" },
+            18000101: { name: "World Finals 23 Statue", image: "images/decorations/Decoration_HV_World_Finals_23_Statue.png" },
+            18000102: { name: "Generic", image: "images/decorations/generic_2.png" },
+            18000103: { name: "Deco Duck Pond", image: "images/decorations/Decoration_HV_Duck_Bath.png" },
+            18000104: { name: "Generic", image: "images/decorations/generic_3.png" },
+            18000105: { name: "Generic", image: "images/decorations/generic_4.png" },
+            18000106: { name: "Generic", image: "images/decorations/generic_5.png" },
+            18000107: { name: "Generic", image: "images/decorations/generic_6.png" },
+            18000108: { name: "Generic", image: "images/decorations/generic_7.png" },
+            18000109: { name: "Deco Hog Pen", image: "images/decorations/Decoration_HV_Hog_Pen.png" },
+            18000110: { name: "Generic", image: "images/decorations/generic_8.png" },
+            18000111: { name: "Generic", image: "images/decorations/generic_9.png" },
+            18000112: { name: "Generic", image: "images/decorations/generic_10.png" },
+            18000113: { name: "Generic", image: "images/decorations/generic_11.png" },
+            18000114: { name: "Deco Cozy Clam", image: "images/decorations/Decoration_HV_Cozy_Clam.png" },
+            18000115: { name: "Deco Gingerbread Building", image: "images/decorations/Decroration_HV_Gingerbread_ Hub_2.png" },
+            18000116: { name: "Deco Jinglebell", image: "images/decorations/Decroration_HV_Jingle_Bell.png" },
+            18000117: { name: "Deco Hogmaster", image: "images/decorations/deco_hogmaster.png" },
+            18000118: { name: "Deco Sock", image: "images/decorations/Decroration_HV_Skeleton_Sock.png" },
+            18000119: { name: "Deco Lny24 Anchor", image: "images/decorations/Decoration_HV_Lucky_Anchor.png" },
+            18000120: { name: "Deco Lny24 Crab", image: "images/decorations/Decoration_HV_Crab_at_home_1.png" },
+            18000121: { name: "Deco Lny24 Baby Dragon", image: "images/decorations/Decoration_HV_Baby_Dragon_Statue.png" },
+            18000122: { name: "Deco Lny24 Dragon Pinata", image: "images/decorations/Decoration_HV_Dragon_Pinata.png" },
+            18000123: { name: "Deco Space 2024 Crater", image: "images/decorations/Decoration_HV_Clashy_Crater.png" },
+            18000124: { name: "Deco Space 2024 Globe", image: "images/decorations/Decoration_HV_Stone_Globe.png" },
+            18000125: { name: "Deco Space 2024 Goblin Statue", image: "images/decorations/deco_space_2024_goblin_statue.png" },
+            18000126: { name: "Deco Egypt 2024 Babydragon", image: "images/decorations/deco_egypt_2024_babydragon.png" },
+            18000127: { name: "Deco Egypt 2024 Goblin", image: "images/decorations/deco_egypt_2024_goblin.png" },
+            18000128: { name: "Deco Egypt 2024 Hog", image: "images/decorations/deco_egypt_2024_hog.png" },
+            18000129: { name: "Deco Gift 2024 Crownsword", image: "images/decorations/deco_gift_2024_crownsword.png" },
+            18000130: { name: "Deco Game Campaign", image: "images/decorations/deco_game_campaign.png" },
+            18000131: { name: "Deco Clashball Goldenboot", image: "images/decorations/Decoration_HV_Golden_Boot.png" },
+            18000132: { name: "Deco Clashball Trophyball", image: "images/decorations/Decoration_HV_Trophy_Ball.png" },
+            18000133: { name: "Deco Clashball Statuecharacter", image: "images/decorations/Decoration_HV_Haaland_Statue.png" },
+            18000134: { name: "Deco Clashball Trophycrown", image: "images/decorations/Decoration_HV_Trophy_Crown.png" },
+            18000135: { name: "Deco Clashball Trophycup", image: "images/decorations/Decoration_HV_Trophy_Cup.png" },
+            18000136: { name: "Deco Clashball Trophybeverage", image: "images/decorations/Decoration_HV_Milk_Trophy.png" },
+            18000137: { name: "Deco Wildwest Cactus", image: "images/decorations/WildWest_Deco_Cactus_High.png" },
+            18000138: { name: "Deco Wildwest Skelly", image: "images/decorations/WildWest_Deco_Skelly_High.png" },
+            18000139: { name: "Deco Wildwest Totem", image: "images/decorations/WildWest_Deco_Totem_High.png" },
+            18000140: { name: "Deco Clashball Goal", image: "images/decorations/Obstacle_HV_Mysterious_Object_Haaland_Event.png" },
+            18000141: { name: "Deco Anime Fortuneteller", image: "images/decorations/deco_anime_fortuneteller.png" },
+            18000143: { name: "Deco Anime Bonsai Tree", image: "images/decorations/Anime_CherryBonsaiTree.png" },
+            18000144: { name: "Deco Anime Chibi Archer", image: "images/decorations/Anime_ChibiArcher.png" },
+            18000145: { name: "Deco Anime Giant School Girl", image: "images/decorations/Anime_SuperDeco_Giant_Schoolgirl.png" },
+            18000146: { name: "Deco Sc Beach Parasol", image: "images/decorations/deco_sc_beach_parasol.png" },
+            18000147: { name: "Deco Sc Brawlstars", image: "images/decorations/deco_sc_brawlstars.png" },
+            18000148: { name: "Deco Sc Gauntlet", image: "images/decorations/deco_sc_gauntlet.png" },
+            18000149: { name: "Deco Sc Hayday Chicken", image: "images/decorations/deco_sc_hayday_chicken.png" },
+            18000150: { name: "Deco Sc Royale Bed", image: "images/decorations/deco_sc_royale_bed.png" },
+            18000151: { name: "Deco Clashgames Firebowl", image: "images/decorations/Decoration_ClashGames_Firebowl.png" },
+            18000152: { name: "Deco Clashgames Goblindive", image: "images/decorations/deco_clashgames_goblindive.png" },
+            18000153: { name: "Deco Clashgames Archerfoot", image: "images/decorations/Decoration_ClashGames_ArcherFoot.png" },
+            18000154: { name: "Deco Ttrpg Treeportal", image: "images/decorations/deco_ttrpg_treeportal.png" },
+            18000155: { name: "Deco Ttrpg Superdeco D20", image: "images/decorations/TTRPG_SuperDeco_Dice_Roll.png" },
+            18000156: {name: "Deco Ttrpg Mimic Chest", image: ""},
+            18000157: {name: "Deco Clashoween 2024", image: "images/decorations/Obstacle_HV_Cauldron_Smiling.png"},
+            18000158: {name : "Deco Clashoween 2024 Prisonbox",image: "images/decorations/Obstacle_HV_Prison_Box.png"},
+            18000159: {name:"Deco Clashoween 2024 Superdeco Cauldron",image:"images/decorations/"},
+            18000160: {name : "Deco Superdeco Mochapot",image:"images/decorations/"},
+            18000161: {name : "Deco Diwali 2024",image : "images/decorations/"},
+            18000162: {name:"Deco Clashmas 2024",image:"images/decorations/"},
+            18000163: {name:"Deco Clashmas 2024 Choir",image:"images/decorations/Clashmas24_Choir.png"},
+            18000164: {name:"Deco Clashmas 2024 Superdeco Globe",image:"images/decorations/Clashmas24_SnowGlobe.png"},
+            18000165: {name: "Deco Clashmas 2024 Sack",image:"images/decorations/"},
+            18000166: {name: "Deco Lny 2025",image:"images/decorations/LNY25_WoodenEgg_Snake Sculpture Obstacle.png"},
+            18000167: {name:"Deco Lny 2025 Monk",image:"images/decorations/LNY25_Monk_Statue_Marketing.png"},
+            18000168: {name:"Deco Fire Ice Sauna",image:"images/decorations/Fire&Ice_Sauna_Super_Deco.png"},
+            18000169: {name:"Deco Lny 2025 Cookie",image:"images/decorations/LNY25_Fortune Cookie_SuperDeco.png"},
+            18000170: {name:"Deco Military 2025 Superdeco Range",image:"images/decorations/"},
+            18000171: {name:"Deco April 2025",image:"images/decorations/april2025_deco"},
+            18000172: {name:"Deco April Goblins 2025",image:"images/decorations/apr25_hv_deco_goblin_marketing.png"},
+            18000173: {name:"Deco Coc Giant 2025",image:"images/decorations/apr25_hv_deco_giant_marketing.png"},
+            18000174: {name:"Creator Fountain Deco",image:"images/decorations/"},
+            18000175: {name: "Deco April 2025 Superdeco",image:"images/decorations/"},
+            18000176: {name:"Deco Japan 2025",image:"images/decorations/"},
+            18000177: {name:"Deco Darkdays 2025 Superdeco",image:"images/decorations/DarkDays_SuperDeco_Piano.png"},
+            18000178: {name:"Deco Darkdays 2025",image:"images/decorations/"},
+            18000179: {name:"Deco Clasharama Frozen Wizard 2025",image:"images/decorations/"},
+            18000180: {name:"Deco Clasharama Ep01 Superdeco",image:"images/decorations/"},
+            18000181: {name:"Deco Clasharama Ep02 Superdeco Paint",image:"images/decorations/"},
+            18000182: {name: "Deco Cyberclash Holoprojector",image : "images/decorations/CyberClash_SuperDeco_Holoprojector.png"},
+            18000183: {name:"Deco Clasharama Sodastand 2025",image:"images/decorations/"},
+            18000184: {name:"Deco Clasharama Table 2025",image:"images/decorations/"},
+            18000185: {name:"Deco Community Crown And Sword",image:"images/decorations/"}
+        };
+
+        let userDecorations = new Set();
+        let allDecorations = []; 
+        let currentFilter = 'all'; 
+
+        // Refined function to extract 'data' codes that are decoration IDs
+        function extractCodesFromJSON(obj, codes = new Set()) {
+            if (typeof obj === 'object' && obj !== null) {
+                if (Array.isArray(obj)) {
+                    // If it's an array, iterate through its elements
+                    obj.forEach(item => extractCodesFromJSON(item, codes));
+                } else {
+                    // If it's an object, check for a 'data' property
+                    if (obj.hasOwnProperty('data') && typeof obj.data === 'number') {
+                        // Only add to the set if it's a known decoration ID
+                        if (decorationData[obj.data]) {
+                            codes.add(obj.data);
+                        }
+                    }
+
+                    // Recursively go through all other properties of the object
+                    for (const key in obj) {
+                        // Avoid infinite loops for self-referencing objects, though unlikely in CoC JSON
+                        if (obj.hasOwnProperty(key) && typeof obj[key] === 'object' && obj[key] !== null) {
+                            extractCodesFromJSON(obj[key], codes);
+                        }
+                    }
+                }
+            }
+            return codes;
+        }
+
+        function analyzeDecorations() {
+            const jsonInput = document.getElementById('jsonInput').value.trim();
+            const errorDiv = document.getElementById('errorMessage');
+            
+            errorDiv.innerHTML = ''; 
+            document.getElementById('resultsSection').style.display = 'none';
+
+            if (!jsonInput) {
+                errorDiv.innerHTML = '<div class="error-message">Please paste your JSON data first!</div>';
+                return;
+            }
+
+            try {
+                const parsedJson = JSON.parse(jsonInput);
+                
+                // Extract decoration codes owned by the user using the refined function
+                userDecorations = extractCodesFromJSON(parsedJson);
+                
+                // Populate allDecorations array based on the master decorationData list
+                // and mark them as owned or missing
+                allDecorations = Object.entries(decorationData).map(([codeStr, details]) => {
+                    const code = parseInt(codeStr);
+                    return {
+                        code: code,
+                        name: details.name,
+                        image: details.image,
+                        owned: userDecorations.has(code)
+                    };
+                });
+
+                displayResults();
+                
+            } catch (error) {
+                console.error("Error parsing JSON:", error);
+                errorDiv.innerHTML = '<div class="error-message">Invalid JSON format. Please check your data and try again.</div>';
+            }
+        }
+
+        function displayResults() {
+            const resultsSection = document.getElementById('resultsSection');
+            const statsContainer = document.getElementById('statsContainer');
+            
+            resultsSection.style.display = 'block'; 
+            
+            const ownedCount = allDecorations.filter(d => d.owned).length;
+            const totalCount = allDecorations.length;
+            const missingCount = totalCount - ownedCount;
+            const percentage = totalCount > 0 ? Math.round((ownedCount / totalCount) * 100) : 0;
+            
+            statsContainer.innerHTML = `
+                <div class="stat-card">
+                    <div class="stat-number">${ownedCount}</div>
+                    <div class="stat-label">Owned Decorations</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${missingCount}</div>
+                    <div class="stat-label">Missing Decorations</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${percentage}%</div>
+                    <div class="stat-label">Collection Complete</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${totalCount}</div>
+                    <div class="stat-label">Total Decorations</div>
+                </div>
+            `;
+            
+            // Set 'all' filter as active initially and display all decorations
+            filterDecorations('all', null); // Pass null for event to avoid errors
+            document.querySelector('.filter-btn.active')?.classList.remove('active'); // Use optional chaining to prevent error if not found
+            document.querySelector('[onclick="filterDecorations(\'all\', event)"]').classList.add('active'); 
+        }
+
+        function filterDecorations(filter, event) {
+            currentFilter = filter;
+            
+            // Update active button only if event is provided (i.e., clicked by user)
+            if (event) {
+                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                event.target.classList.add('active');
+            }
+            
+            let filtered = [...allDecorations]; 
+
+            switch (filter) {
+                case 'owned':
+                    filtered = filtered.filter(d => d.owned);
+                    break;
+                case 'missing':
+                    filtered = filtered.filter(d => !d.owned);
+                    break;
+                default:
+                    break;
+            }
+            
+            const searchTerm = document.getElementById('searchBox').value.toLowerCase();
+            if (searchTerm) {
+                filtered = filtered.filter(d => 
+                    d.name.toLowerCase().includes(searchTerm) ||
+                    d.code.toString().includes(searchTerm)
+                );
+            }
+            
+            displayDecorations(filtered); 
+        }
+
+        function searchDecorations() {
+            filterDecorations(currentFilter, null); 
+        }
+
+        function displayDecorations(decorationsToDisplay) {
+            const decorationsGrid = document.getElementById('decorationsGrid');
+            decorationsGrid.innerHTML = ''; 
+
+            if (decorationsToDisplay.length === 0) {
+                decorationsGrid.innerHTML = '<p style="text-align: center; color: #666; padding: 20px;">No decorations found matching your criteria.</p>';
+                return;
+            }
+
+            decorationsToDisplay.forEach(decoration => {
+                const card = document.createElement('div');
+                card.classList.add('decoration-card');
+                card.classList.add(decoration.owned ? 'owned' : 'missing');
+
+                let imageHtml = '';
+                if (decoration.image) {
+                    imageHtml = `<img src="${decoration.image}" alt="${decoration.name}" class="decoration-image">`;
+                } else {
+                    // Fallback if image path is missing or empty
+                    imageHtml = `<div class="decoration-image" style="background-color: #f0f0f0;">✨</div>`; // A generic icon or placeholder
+                }
+
+                card.innerHTML = `
+                    ${imageHtml}
+                    <div class="decoration-name">${decoration.name}</div>
+                    <div class="decoration-code">ID: ${decoration.code}</div>
+                    <span class="status-indicator ${decoration.owned ? 'status-owned' : 'status-missing'}">
+                        ${decoration.owned ? 'Owned' : 'Missing'}
+                    </span>
+                `;
+                decorationsGrid.appendChild(card);
+            });
+        }
+    </script>
+</body>
+</html>
