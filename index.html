@@ -35,7 +35,7 @@
         }
 
         .header {
-            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #2563eb 100%);
+            background: rgba(17, 24, 39, 0.5);
             padding: 40px 30px;
             text-align: center;
             color: white;
@@ -437,6 +437,7 @@
         <div class="header">
             <h1>CoC Decoration Checker</h1>
             <p>Paste your JSON data to see which decorations you own!</p>
+            <img src="images/json_game.jpg" alt="CoC Logo" style="width: 500px; height: 100px ; margin-top: 20px; border-radius: 10px;">
         </div>
 
         <div class="input-section">
@@ -445,7 +446,7 @@
                 <textarea id="jsonInput" placeholder='Paste your Clash of Clans JSON data here...'></textarea>
             </div>
             <div class="btn-container">
-                <button class="analyze-btn" onclick="analyzeDecorations()">🔍 Analyze Decorations</button>
+                <button class="analyze-btn" onclick="analyzeDecorations()">Analyze Decorations</button>
             </div>
             <div id="errorMessage"></div>
         </div>
@@ -457,7 +458,7 @@
                 <button class="filter-btn active" onclick="filterDecorations('all', event)">All</button>
                 <button class="filter-btn" onclick="filterDecorations('owned', event)">Owned</button>
                 <button class="filter-btn" onclick="filterDecorations('missing', event)">Missing</button>
-                <input type="text" class="search-box" id="searchBox" placeholder="🔍 Search decorations..." oninput="searchDecorations()">
+                <input type="text" class="search-box" id="searchBox" placeholder=" Search decorations..." oninput="searchDecorations()">
             </div>
             
             <div class="decorations-grid" id="decorationsGrid"></div>
