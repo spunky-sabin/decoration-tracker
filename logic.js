@@ -13,10 +13,13 @@
                 // Convert the JSON array to the expected format
                 decorationData = {};
                 jsonData.forEach(item => {
+                    decorationData = {};
+                jsonData.forEach(item => {
                     decorationData[item.Code] = {
                         name: item.name,
-                        image: `images/decorations/decoration_${item.Code.slice(2)}.png` // Generic image path
+                        image: item.image // Use the actual image path from JSON
                     };
+                });
                 });
                 
                 console.log(`Loaded ${Object.keys(decorationData).length} decorations from JSON file`);
