@@ -1,213 +1,213 @@
+let decorationData = {};
+let userDecorations = new Set();
+let allDecorations = [];
+let currentFilter = 'all';
+let imageObserver;
 
-        let decorationData = {}; // Will be loaded from JSON file
-        let userDecorations = new Set();
-        let allDecorations = []; 
-        let currentFilter = 'all'; 
-
-        // Load decoration data from JSON file
-        async function loadDecorationData() {
-            try {
-                const response = await fetch('finaldeco_updated.json');
-                const jsonData = await response.json();
-                
-                // Convert the JSON array to the expected format
-                decorationData = {};
-                jsonData.forEach(item => {
-                    decorationData = {};
-                jsonData.forEach(item => {
-                    decorationData[item.Code] = {
-                        name: item.name,
-                        image: item.image // Use the actual image path from JSON
+// Initialize Intersection Observer for lazy loading
+function initImageObserver() {
+    imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                if (img.dataset.src && !img.src) {
+                    img.src = img.dataset.src;
+                    img.onload = () => img.classList.add('loaded');
+                    img.onerror = () => {
+                        img.style.display = 'none';
+                        img.parentElement.innerHTML = '✨';
                     };
-                });
-                });
-                
-                console.log(`Loaded ${Object.keys(decorationData).length} decorations from JSON file`);
-            } catch (error) {
-                console.error('Error loading decoration data:', error);
-                // Fallback error message
-                document.getElementById('errorMessage').innerHTML = 
-                    '<div class="error-message">Failed to load decoration data. Please ensure finaldeco_updated.json is in the same directory.</div>';
-            }
-        }
-
-        // Refined function to extract 'data' codes that are decoration IDs
-        function extractCodesFromJSON(obj, codes = new Set()) {
-            if (typeof obj === 'object' && obj !== null) {
-                if (Array.isArray(obj)) {
-                    // If it's an array, iterate through its elements
-                    obj.forEach(item => extractCodesFromJSON(item, codes));
-                } else {
-                    // If it's an object, check for a 'data' property
-                    if (obj.hasOwnProperty('data') && typeof obj.data === 'number') {
-                        // Only add to the set if it's a known decoration ID
-                        if (decorationData[obj.data]) {
-                            codes.add(obj.data);
-                        }
-                    }
-
-                    // Recursively go through all other properties of the object
-                    for (const key in obj) {
-                        // Avoid infinite loops for self-referencing objects, though unlikely in CoC JSON
-                        if (obj.hasOwnProperty(key) && typeof obj[key] === 'object' && obj[key] !== null) {
-                            extractCodesFromJSON(obj[key], codes);
-                        }
-                    }
                 }
+                imageObserver.unobserve(img);
             }
-            return codes;
+        });
+    }, { rootMargin: '50px' });
+}
+
+// Load decoration data
+async function loadDecorationData() {
+    try {
+        const response = await fetch('finaldeco_updated.json');
+        const jsonData = await response.json();
+        
+        decorationData = {};
+        jsonData.forEach(item => {
+            decorationData[item.Code] = {
+                name: item.name,
+                image: item.image
+            };
+        });
+        
+        console.log(`Loaded ${Object.keys(decorationData).length} decorations`);
+    } catch (error) {
+        console.error('Error loading decoration data:', error);
+        document.getElementById('errorMessage').innerHTML = 
+            '<div class="error-message">Failed to load decoration data. Please ensure finaldeco_updated.json is available.</div>';
+    }
+}
+
+// Extract decoration codes from JSON
+function extractCodesFromJSON(obj, codes = new Set()) {
+    if (!obj || typeof obj !== 'object') return codes;
+    
+    if (Array.isArray(obj)) {
+        obj.forEach(item => extractCodesFromJSON(item, codes));
+    } else {
+        if (obj.data && typeof obj.data === 'number' && decorationData[obj.data]) {
+            codes.add(obj.data);
         }
+        Object.values(obj).forEach(val => {
+            if (typeof val === 'object') extractCodesFromJSON(val, codes);
+        });
+    }
+    return codes;
+}
 
-        function analyzeDecorations() {
-            const jsonInput = document.getElementById('jsonInput').value.trim();
-            const errorDiv = document.getElementById('errorMessage');
-            
-            errorDiv.innerHTML = ''; 
-            document.getElementById('resultsSection').style.display = 'none';
+// Analyze decorations
+function analyzeDecorations() {
+    const jsonInput = document.getElementById('jsonInput').value.trim();
+    const errorDiv = document.getElementById('errorMessage');
+    
+    errorDiv.innerHTML = '';
+    document.getElementById('resultsSection').style.display = 'none';
 
-            // Check if decoration data is loaded
-            if (Object.keys(decorationData).length === 0) {
-                errorDiv.innerHTML = '<div class="error-message">Decoration data is still loading. Please wait and try again.</div>';
-                return;
-            }
+    if (!Object.keys(decorationData).length) {
+        errorDiv.innerHTML = '<div class="error-message">Decoration data is still loading. Please wait.</div>';
+        return;
+    }
 
-            if (!jsonInput) {
-                errorDiv.innerHTML = '<div class="error-message">Please paste your JSON data first!</div>';
-                return;
-            }
+    if (!jsonInput) {
+        errorDiv.innerHTML = '<div class="error-message">Please paste your JSON data first!</div>';
+        return;
+    }
 
-            try {
-                const parsedJson = JSON.parse(jsonInput);
-                
-                // Extract decoration codes owned by the user using the refined function
-                userDecorations = extractCodesFromJSON(parsedJson);
-                
-                // Populate allDecorations array based on the master decorationData list
-                // and mark them as owned or missing
-                allDecorations = Object.entries(decorationData).map(([codeStr, details]) => {
-                    const code = parseInt(codeStr);
-                    return {
-                        code: code,
-                        name: details.name,
-                        image: details.image,
-                        owned: userDecorations.has(code)
-                    };
-                });
+    try {
+        const parsedJson = JSON.parse(jsonInput);
+        userDecorations = extractCodesFromJSON(parsedJson);
+        
+        allDecorations = Object.entries(decorationData).map(([code, details]) => ({
+            code: parseInt(code),
+            name: details.name,
+            image: details.image,
+            owned: userDecorations.has(parseInt(code))
+        }));
 
-                displayResults();
-                
-            } catch (error) {
-                console.error("Error parsing JSON:", error);
-                errorDiv.innerHTML = '<div class="error-message">Invalid JSON format. Please check your data and try again.</div>';
-            }
-        }
+        displayResults();
+    } catch (error) {
+        console.error("Error parsing JSON:", error);
+        errorDiv.innerHTML = '<div class="error-message">Invalid JSON format. Please check your data.</div>';
+    }
+}
 
-        function displayResults() {
-            const resultsSection = document.getElementById('resultsSection');
-            const statsContainer = document.getElementById('statsContainer');
-            
-            resultsSection.style.display = 'block'; 
-            
-            const ownedCount = allDecorations.filter(d => d.owned).length;
-            const totalCount = allDecorations.length;
-            const missingCount = totalCount - ownedCount;
-            const percentage = totalCount > 0 ? Math.round((ownedCount / totalCount) * 100) : 0;
-            
-            statsContainer.innerHTML = `
-                <div class="stat-card">
-                    <div class="stat-number">${ownedCount}</div>
-                    <div class="stat-label">Owned Decorations</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">${missingCount}</div>
-                    <div class="stat-label">Missing Decorations</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">${percentage}%</div>
-                    <div class="stat-label">Collection Complete</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">${totalCount}</div>
-                    <div class="stat-label">Total Decorations</div>
-                </div>
-            `;
-            
-            // Set 'all' filter as active initially and display all decorations
-            filterDecorations('all', null); // Pass null for event to avoid errors
-            document.querySelector('.filter-btn.active')?.classList.remove('active'); // Use optional chaining to prevent error if not found
-            document.querySelector('[onclick="filterDecorations(\'all\', event)"]').classList.add('active'); 
-        }
+// Display results
+function displayResults() {
+    const resultsSection = document.getElementById('resultsSection');
+    const statsContainer = document.getElementById('statsContainer');
+    
+    resultsSection.style.display = 'block';
+    
+    const owned = allDecorations.filter(d => d.owned).length;
+    const total = allDecorations.length;
+    const missing = total - owned;
+    const percentage = total ? Math.round((owned / total) * 100) : 0;
+    
+    statsContainer.innerHTML = `
+        <div class="stat-card">
+            <div class="stat-number">${owned}</div>
+            <div class="stat-label">Owned</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">${missing}</div>
+            <div class="stat-label">Missing</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">${percentage}%</div>
+            <div class="stat-label">Complete</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">${total}</div>
+            <div class="stat-label">Total</div>
+        </div>
+    `;
+    
+    filterDecorations('all');
+}
 
-        function filterDecorations(filter, event) {
-            currentFilter = filter;
-            
-            // Update active button only if event is provided (i.e., clicked by user)
-            if (event) {
-                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-                event.target.classList.add('active');
-            }
-            
-            let filtered = [...allDecorations]; 
+// Filter decorations
+function filterDecorations(filter, event) {
+    currentFilter = filter;
+    
+    if (event) {
+        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+    }
+    
+    let filtered = [...allDecorations];
+    
+    if (filter === 'owned') filtered = filtered.filter(d => d.owned);
+    else if (filter === 'missing') filtered = filtered.filter(d => !d.owned);
+    
+    const searchTerm = document.getElementById('searchBox').value.toLowerCase();
+    if (searchTerm) {
+        filtered = filtered.filter(d => 
+            d.name.toLowerCase().includes(searchTerm) || 
+            d.code.toString().includes(searchTerm)
+        );
+    }
+    
+    displayDecorations(filtered);
+}
 
-            switch (filter) {
-                case 'owned':
-                    filtered = filtered.filter(d => d.owned);
-                    break;
-                case 'missing':
-                    filtered = filtered.filter(d => !d.owned);
-                    break;
-                default:
-                    break;
-            }
-            
-            const searchTerm = document.getElementById('searchBox').value.toLowerCase();
-            if (searchTerm) {
-                filtered = filtered.filter(d => 
-                    d.name.toLowerCase().includes(searchTerm) ||
-                    d.code.toString().includes(searchTerm)
-                );
-            }
-            
-            displayDecorations(filtered); 
-        }
+// Search decorations
+function searchDecorations() {
+    filterDecorations(currentFilter);
+}
 
-        function searchDecorations() {
-            filterDecorations(currentFilter, null); 
-        }
+// Display decorations with lazy loading
+function displayDecorations(decorations) {
+    const grid = document.getElementById('decorationsGrid');
+    grid.innerHTML = '';
 
-        function displayDecorations(decorationsToDisplay) {
-            const decorationsGrid = document.getElementById('decorationsGrid');
-            decorationsGrid.innerHTML = ''; 
+    if (!decorations.length) {
+        grid.innerHTML = '<p style="text-align: center; color: #666; padding: 20px; grid-column: 1/-1;">No decorations found.</p>';
+        return;
+    }
 
-            if (decorationsToDisplay.length === 0) {
-                decorationsGrid.innerHTML = '<p style="text-align: center; color: #666; padding: 20px;">No decorations found matching your criteria.</p>';
-                return;
-            }
+    // Create cards in batches for better performance
+    const fragment = document.createDocumentFragment();
+    
+    decorations.forEach(decoration => {
+        const card = document.createElement('div');
+        card.className = `decoration-card ${decoration.owned ? 'owned' : 'missing'}`;
+        
+        const imageHtml = decoration.image 
+            ? `<img class="decoration-image" data-src="${decoration.image}" alt="${decoration.name}" loading="lazy">`
+            : `<div class="decoration-image loaded">✨</div>`;
+        
+        card.innerHTML = `
+            ${imageHtml}
+            <div class="decoration-name">${decoration.name}</div>
+            <div class="decoration-code">ID: ${decoration.code}</div>
+            <span class="status-indicator ${decoration.owned ? 'status-owned' : 'status-missing'}">
+                ${decoration.owned ? 'Owned' : 'Missing'}
+            </span>
+        `;
+        
+        fragment.appendChild(card);
+    });
+    
+    grid.appendChild(fragment);
+    
+    // Observe images for lazy loading
+    if (imageObserver) {
+        grid.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
+    }
+}
 
-            decorationsToDisplay.forEach(decoration => {
-                const card = document.createElement('div');
-                card.classList.add('decoration-card');
-                card.classList.add(decoration.owned ? 'owned' : 'missing');
-
-                let imageHtml = '';
-                if (decoration.image) {
-                    imageHtml = `<img src="${decoration.image}" alt="${decoration.name}" class="decoration-image">`;
-                } else {
-                    // Fallback if image path is missing or empty
-                    imageHtml = `<div class="decoration-image" style="background-color: #f0f0f0;">✨</div>`; // A generic icon or placeholder
-                }
-
-                card.innerHTML = `
-                    ${imageHtml}
-                    <div class="decoration-name">${decoration.name}</div>
-                    <div class="decoration-code">ID: ${decoration.code}</div>
-                    <span class="status-indicator ${decoration.owned ? 'status-owned' : 'status-missing'}">
-                        ${decoration.owned ? 'Owned' : 'Missing'}
-                    </span>
-                `;
-                decorationsGrid.appendChild(card);
-            });
-        }
-
-        // Initialize the app
-        window.addEventListener('DOMContentLoaded', loadDecorationData);
+// Initialize
+window.addEventListener('DOMContentLoaded', () => {
+    initImageObserver();
+    loadDecorationData();
+});
