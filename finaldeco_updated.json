@@ -177,7 +177,7 @@
     "Count": 1,
     "TID": "TID_DECORATION_SHORT_FILM_STATUE",
     "name": "Storied Statue",
-    "image": "images/decorations/shDecoration_HV_Storied_Statue.png"
+    "image": "images/decorations/Decoration_HV_Storied_Statue.png"
   },
   {
     "SN": 21,
@@ -341,51 +341,7 @@
     "name": "Goblin Dragon Statue",
     "image": "images/decorations/Decoration_HV_Goblin_Dragon_Statue.png"
   },
-  {
-    "SN": 41,
-    "Name": "Goblin Barrel",
-    "Code": "18000091",
-    "Count": 1,
-    "TID": "TID_DECO_GOBLIN_BARREL",
-    "name": "Goblin Barrel",
-    "image": "images/decorations/deco_goblin_barrel.png"
-  },
-  {
-    "SN": 42,
-    "Name": "CWL hammer",
-    "Code": "18000092",
-    "Count": 1,
-    "TID": "TID_DECO_CWL_HAMMER",
-    "name": "League Hammer",
-    "image": "images/decorations/deco_cwl_hammer.png"
-  },
-  {
-    "SN": 43,
-    "Name": "CWL shield",
-    "Code": "18000093",
-    "Count": 1,
-    "TID": "TID_DECO_CWL_SHIELD",
-    "name": "League Shield",
-    "image": "images/decorations/deco_cwl_shield.png"
-  },
-  {
-    "SN": 44,
-    "Name": "Razer Promo Deco",
-    "Code": "18000094",
-    "Count": 1,
-    "TID": "TID_DECO_RAZER_PROMO",
-    "name": "Razer Deco",
-    "image": "images/decorations/deco_razer_promo.png"
-  },
-  {
-    "SN": 45,
-    "Name": "Barbarian Flexing Statue 2023",
-    "Code": "18000095",
-    "Count": 1,
-    "TID": "TID_DECO_FLEXING_BARB",
-    "name": "Flexing Barbarian",
-    "image": "images/decorations/deco_flexing_barb.png"
-  },
+  
   {
     "SN": 46,
     "Name": "Halloween2023_coffin",
