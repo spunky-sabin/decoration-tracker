@@ -14,7 +14,7 @@
                 decorationData = {};
                 jsonData.forEach(item => {
                     decorationData[item.Code] = {
-                        name: item.Name,
+                        name: item.name,
                         image: `images/decorations/decoration_${item.Code.slice(2)}.png` // Generic image path
                     };
                 });

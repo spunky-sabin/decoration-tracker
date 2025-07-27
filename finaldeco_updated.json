@@ -4,909 +4,1039 @@
     "Name": "Barbarian Statue",
     "Code": "18000000",
     "Count": 1,
-    "TID": "TID_DECORATION_BARBARIAN_STATUE"
+    "TID": "TID_DECORATION_BARBARIAN_STATUE",
+    "name": "Mighty Statue"
   },
   {
     "SN": 2,
     "Name": "Torch",
     "Code": "18000001",
     "Count": 4,
-    "TID": "TID_DECORATION_TORCH"
+    "TID": "TID_DECORATION_TORCH",
+    "name": "Torch"
   },
   {
     "SN": 126,
     "Name": "Goblin Pole",
     "Code": "18000002",
     "Count": 1,
-    "TID": "TID_DECORATION_GENERIC"
+    "TID": "TID_DECORATION_GENERIC",
+    "name": "Decoration"
   },
   {
     "SN": 3,
     "Name": "White Flag",
     "Code": "18000003",
     "Count": 1,
-    "TID": "TID_DECORATION_WHITE_FLAG"
+    "TID": "TID_DECORATION_WHITE_FLAG",
+    "name": "White Flag"
   },
   {
     "SN": 4,
     "Name": "Skull Flag",
     "Code": "18000004",
     "Count": 1,
-    "TID": "TID_DECORATION_SKULL_FLAG"
+    "TID": "TID_DECORATION_SKULL_FLAG",
+    "name": "Pirate Flag"
   },
   {
     "SN": 5,
     "Name": "Flower box 1",
     "Code": "18000005",
     "Count": 4,
-    "TID": "TID_DECORATION_FLOWERBOX1"
+    "TID": "TID_DECORATION_FLOWERBOX1",
+    "name": "Cornflower Bed"
   },
   {
     "SN": 6,
     "Name": "Flower box 2",
     "Code": "18000006",
     "Count": 4,
-    "TID": "TID_DECORATION_FLOWERBOX2"
+    "TID": "TID_DECORATION_FLOWERBOX2",
+    "name": "Sunflower Bed"
   },
   {
     "SN": 7,
     "Name": "BK Statue",
     "Code": "18000037",
     "Count": 1,
-    "TID": "TID_DECORATION_BK_STATUE"
+    "TID": "TID_DECORATION_BK_STATUE",
+    "name": "Mighty Hero Statue"
   },
   {
     "SN": 8,
     "Name": "Builder Statue",
     "Code": "18000046",
     "Count": 1,
-    "TID": "TID_DECORATION_BUILDER_STATUE"
+    "TID": "TID_DECORATION_BUILDER_STATUE",
+    "name": "Builder Statue"
   },
   {
     "SN": 9,
     "Name": "Rex Calibur",
     "Code": "18000047",
     "Count": 1,
-    "TID": "TID_DECORATION_SWORD_IN_STONE"
+    "TID": "TID_DECORATION_SWORD_IN_STONE",
+    "name": "The Champion Statue"
   },
   {
     "SN": 10,
     "Name": "League I Statue",
     "Code": "18000048",
     "Count": 1,
-    "TID": "TID_DECORATION_LEAGUE_I_STATUE"
+    "TID": "TID_DECORATION_LEAGUE_I_STATUE",
+    "name": "The Master Statue"
   },
   {
     "SN": 11,
     "Name": "League II Statue",
     "Code": "18000049",
     "Count": 1,
-    "TID": "TID_DECORATION_LEAGUE_II_STATUE"
+    "TID": "TID_DECORATION_LEAGUE_II_STATUE",
+    "name": "The Contender Statue"
   },
   {
     "SN": 12,
     "Name": "League III Statue",
     "Code": "18000050",
     "Count": 1,
-    "TID": "TID_DECORATION_LEAGUE_III_STATUE"
+    "TID": "TID_DECORATION_LEAGUE_III_STATUE",
+    "name": "The Challenger Statue"
   },
   {
     "SN": 13,
     "Name": "Shield Statue",
     "Code": "18000051",
     "Count": 1,
-    "TID": "TID_DECORATION_WAR_SHIELD"
+    "TID": "TID_DECORATION_WAR_SHIELD",
+    "name": "The Warrior Statue"
   },
   {
     "SN": 14,
     "Name": "Golden Hog",
     "Code": "18000052",
     "Count": 3,
-    "TID": "TID_DECORATION_GOLDEN_HOG"
+    "TID": "TID_DECORATION_GOLDEN_HOG",
+    "name": "Golden Hog"
   },
   {
     "SN": 15,
     "Name": "Snowman",
     "Code": "18000054",
     "Count": 1,
-    "TID": "TID_DECORATION_SNOWMAN"
+    "TID": "TID_DECORATION_SNOWMAN",
+    "name": "Snowman"
   },
   {
     "SN": 16,
     "Name": "Snowman",
     "Code": "18000055",
     "Count": 1,
-    "TID": "TID_DECORATION_SNOWMAN"
+    "TID": "TID_DECORATION_SNOWMAN",
+    "name": "Snowman"
   },
   {
     "SN": 17,
     "Name": "Dragon Statue",
     "Code": "18000057",
     "Count": 1,
-    "TID": "TID_DECORATION_DRAGON_STATUE"
+    "TID": "TID_DECORATION_DRAGON_STATUE",
+    "name": "Dragon Statue"
   },
   {
     "SN": 18,
     "Name": "Golden Goblin",
     "Code": "18000058",
     "Count": 1,
-    "TID": "TID_DECORATION_GOLDEN_GOBLIN"
+    "TID": "TID_DECORATION_GOLDEN_GOBLIN",
+    "name": "Golden Poet"
   },
   {
     "SN": 19,
     "Name": "SuperTroopStatue",
     "Code": "18000059",
     "Count": 1,
-    "TID": "TID_DECORATION_SUPER_TROOP_STATUE"
+    "TID": "TID_DECORATION_SUPER_TROOP_STATUE",
+    "name": "Super Statue"
   },
   {
     "SN": 20,
     "Name": "ShortFilmStatue",
     "Code": "18000060",
     "Count": 1,
-    "TID": "TID_DECORATION_SHORT_FILM_STATUE"
+    "TID": "TID_DECORATION_SHORT_FILM_STATUE",
+    "name": "Storied Statue"
   },
   {
     "SN": 21,
     "Name": "SC 10Year Fountain",
     "Code": "18000061",
     "Count": 1,
-    "TID": "TID_DECORATION_10_YEAR_FOUNTAIN"
+    "TID": "TID_DECORATION_10_YEAR_FOUNTAIN",
+    "name": "Anniversary Fountain"
   },
   {
     "SN": 22,
     "Name": "Clockwork Statue",
     "Code": "18000062",
     "Count": 1,
-    "TID": "TID_DECORATION_CLOCKWORK_STATUE"
+    "TID": "TID_DECORATION_CLOCKWORK_STATUE",
+    "name": "Clockwork Statue"
   },
   {
     "SN": 23,
     "Name": "8 Year Birthday Statue",
     "Code": "18000063",
     "Count": 1,
-    "TID": "TID_DECORATION_8YEAR_BIRTHDAY_STATUE"
+    "TID": "TID_DECORATION_8YEAR_BIRTHDAY_STATUE",
+    "name": "\\qA Piece of Birthday Cake\\q"
   },
   {
     "SN": 24,
     "Name": "Pirate Deco",
     "Code": "18000064",
     "Count": 1,
-    "TID": "TID_DECORATION_PIRATE_ANCHOR"
+    "TID": "TID_DECORATION_PIRATE_ANCHOR",
+    "name": "Retired Anchor"
   },
   {
     "SN": 25,
     "Name": "Logmas Deco",
     "Code": "18000065",
     "Count": 1,
-    "TID": "TID_DECO_LOGMAS_TREE"
+    "TID": "TID_DECO_LOGMAS_TREE",
+    "name": "Logmas Tree"
   },
   {
     "SN": 26,
     "Name": "Golden Wall Breaker",
     "Code": "18000066",
     "Count": 1,
-    "TID": "TID_DECO_FIREWORK_FANBOY"
+    "TID": "TID_DECO_FIREWORK_FANBOY",
+    "name": "Firework Fanboy"
   },
   {
     "SN": 27,
     "Name": "Jungle Deco",
     "Code": "18000067",
     "Count": 1,
-    "TID": "TID_DECO_TH14_FOUNTAIN"
+    "TID": "TID_DECO_TH14_FOUNTAIN",
+    "name": "Flowing Fountain"
   },
   {
     "SN": 28,
     "Name": "9 Year Birthday Statue",
     "Code": "18000068",
     "Count": 1,
-    "TID": "TID_DECORATION_9YEAR_BIRTHDAY_STATUE"
+    "TID": "TID_DECORATION_9YEAR_BIRTHDAY_STATUE",
+    "name": "Fiery Figure"
   },
   {
     "SN": 29,
     "Name": "Fallen Wizard Statue",
     "Code": "18000069",
     "Count": 1,
-    "TID": "TID_WIZARD_STATUE"
+    "TID": "TID_WIZARD_STATUE",
+    "name": "Wizard Statue"
   },
   {
     "SN": 30,
     "Name": "10 Year Birthday Statue",
     "Code": "18000070",
     "Count": 1,
-    "TID": "TID_DECORATION_10YEAR_BIRTHDAY_STATUE"
+    "TID": "TID_DECORATION_10YEAR_BIRTHDAY_STATUE",
+    "name": "Goblin King Tribute"
   },
   {
     "SN": 31,
     "Name": "Clash Fest Statue",
     "Code": "18000071",
     "Count": 1,
-    "TID": "TID_DECORATION_CLASH_FEST_22_STATUE"
+    "TID": "TID_DECORATION_CLASH_FEST_22_STATUE",
+    "name": "Eternal Flame"
   },
   {
     "SN": 32,
     "Name": "Clashmas22 Deco",
     "Code": "18000072",
     "Count": 1,
-    "TID": "TID_DECORATION_CLASHMAS_22"
+    "TID": "TID_DECORATION_CLASHMAS_22",
+    "name": "Clashmas Sleigh"
   },
   {
     "SN": 33,
     "Name": "LNY2023Statue",
     "Code": "18000073",
     "Count": 1,
-    "TID": "TID_STATUE_LNY_2023"
+    "TID": "TID_STATUE_LNY_2023",
+    "name": "Magic Show Statue"
   },
   {
     "SN": 34,
     "Name": "Baby Dragon Painted",
     "Code": "18000074",
     "Count": 1,
-    "TID": "TID_DECO_PAINTED_BABY_DRAGON"
+    "TID": "TID_DECO_PAINTED_BABY_DRAGON",
+    "name": "Decorated Dragon Statue"
   },
   {
     "SN": 35,
     "Name": "Dark Ages Dragon_Statue",
     "Code": "18000075",
     "Count": 2,
-    "TID": "TID_DECO_DARK_AGES_DRAGON"
+    "TID": "TID_DECO_DARK_AGES_DRAGON",
+    "name": "Dragon Trophy"
   },
   {
     "SN": 36,
     "Name": "Terry Statue",
     "Code": "18000079",
     "Count": 1,
-    "TID": "TID_BOOKS_OF_CLASH"
+    "TID": "TID_BOOKS_OF_CLASH",
+    "name": "Books of Clash"
   },
   {
     "SN": 37,
     "Name": "Goblin Gold Chest",
     "Code": "18000081",
     "Count": 1,
-    "TID": "TID_DECO_GOBLIN_CHEST"
+    "TID": "TID_DECO_GOBLIN_CHEST",
+    "name": "Goblin Chest"
   },
   {
     "SN": 38,
     "Name": "Goblin Gold Cart",
     "Code": "18000082",
     "Count": 1,
-    "TID": "TID_DECO_GOBLIN_CART"
+    "TID": "TID_DECO_GOBLIN_CART",
+    "name": "Goblin Cart"
   },
   {
     "SN": 39,
     "Name": "Goblin Cellar",
     "Code": "18000089",
     "Count": 1,
-    "TID": "TID_DECO_GOBLIN_CELLAR"
+    "TID": "TID_DECO_GOBLIN_CELLAR",
+    "name": "Goblin Cellar"
   },
   {
     "SN": 40,
     "Name": "Goblin Dragon Statue",
     "Code": "18000090",
     "Count": 1,
-    "TID": "TID_DECO_GOBLIN_DRAGON_STATUE"
+    "TID": "TID_DECO_GOBLIN_DRAGON_STATUE",
+    "name": "Goblin Dragon Statue"
   },
   {
     "SN": 41,
     "Name": "Goblin Barrel",
     "Code": "18000091",
     "Count": 1,
-    "TID": "TID_DECO_GOBLIN_BARREL"
+    "TID": "TID_DECO_GOBLIN_BARREL",
+    "name": "Goblin Barrel"
   },
   {
     "SN": 42,
     "Name": "CWL hammer",
     "Code": "18000092",
     "Count": 1,
-    "TID": "TID_DECO_CWL_HAMMER"
+    "TID": "TID_DECO_CWL_HAMMER",
+    "name": "League Hammer"
   },
   {
     "SN": 43,
     "Name": "CWL shield",
     "Code": "18000093",
     "Count": 1,
-    "TID": "TID_DECO_CWL_SHIELD"
+    "TID": "TID_DECO_CWL_SHIELD",
+    "name": "League Shield"
   },
   {
     "SN": 44,
     "Name": "Razer Promo Deco",
     "Code": "18000094",
     "Count": 1,
-    "TID": "TID_DECO_RAZER_PROMO"
+    "TID": "TID_DECO_RAZER_PROMO",
+    "name": "Razer Deco"
   },
   {
     "SN": 45,
     "Name": "Barbarian Flexing Statue 2023",
     "Code": "18000095",
     "Count": 1,
-    "TID": "TID_DECO_FLEXING_BARB"
+    "TID": "TID_DECO_FLEXING_BARB",
+    "name": "Flexing Barbarian"
   },
   {
     "SN": 46,
     "Name": "Halloween2023_coffin",
     "Code": "18000096",
     "Count": 3,
-    "TID": "TID_DECO_COFFIN"
+    "TID": "TID_DECO_COFFIN",
+    "name": "Cosy Coffin"
   },
   {
     "SN": 47,
     "Name": "Halloween2023_clown_statue",
     "Code": "18000097",
     "Count": 1,
-    "TID": "TID_DECO_CLOWN"
+    "TID": "TID_DECO_CLOWN",
+    "name": "\\qFriendly\\q Clown"
   },
   {
     "SN": 48,
     "Name": "Halloween2023_dead_jakuzzi",
     "Code": "18000098",
     "Count": 3,
-    "TID": "TID_DECO_DEAD_JAKUZZI"
+    "TID": "TID_DECO_DEAD_JAKUZZI",
+    "name": "Spooky Spa"
   },
   {
     "SN": 49,
     "Name": "Halloween2023_scarecrow",
     "Code": "18000099",
     "Count": 3,
-    "TID": "TID_DECO_SCARECROW"
+    "TID": "TID_DECO_SCARECROW",
+    "name": "Pumpkin Scarecrow"
   },
   {
     "SN": 50,
     "Name": "Halloween2023_completion_cauldron",
     "Code": "18000100",
     "Count": 1,
-    "TID": "TID_BUILDING_CLASHOWEEN_BUILDING"
+    "TID": "TID_BUILDING_CLASHOWEEN_BUILDING",
+    "name": "Sour Elixir Cauldron"
   },
   {
     "SN": 51,
     "Name": "World Finals23 Statue",
     "Code": "18000101",
     "Count": 1,
-    "TID": "TID_WORLD_FINALS_23_STATUE"
+    "TID": "TID_WORLD_FINALS_23_STATUE",
+    "name": "World Finals 23 Statue"
   },
   {
     "SN": 52,
     "Name": "Fountain Rework",
     "Code": "18000102",
     "Count": 1,
-    "TID": "TID_DECORATION_GENERIC"
+    "TID": "TID_DECORATION_GENERIC",
+    "name": "Decoration"
   },
   {
     "SN": 53,
     "Name": "Bath",
     "Code": "18000103",
     "Count": 1,
-    "TID": "TID_DECO_DUCK_POND"
+    "TID": "TID_DECO_DUCK_POND",
+    "name": "Duck Bath"
   },
   {
     "SN": 54,
     "Name": "Hog Park",
     "Code": "18000109",
     "Count": 1,
-    "TID": "TID_DECO_HOG_PEN"
+    "TID": "TID_DECO_HOG_PEN",
+    "name": "Hog Pen"
   },
   {
     "SN": 55,
     "Name": "ClashClam",
     "Code": "18000114",
     "Count": 1,
-    "TID": "TID_DECO_COZY_CLAM"
+    "TID": "TID_DECO_COZY_CLAM",
+    "name": "Cozy Clam"
   },
   {
     "SN": 56,
     "Name": "ClashMas2023_dough_building",
     "Code": "18000115",
     "Count": 1,
-    "TID": "TID_DECO_GINGERBREAD_BUILDING"
+    "TID": "TID_DECO_GINGERBREAD_BUILDING",
+    "name": "Gingerbread Bakery"
   },
   {
     "SN": 57,
     "Name": "ClashMas2023_jinglebell",
     "Code": "18000116",
     "Count": 1,
-    "TID": "TID_DECO_JINGLEBELL"
+    "TID": "TID_DECO_JINGLEBELL",
+    "name": "Jingle Bell"
   },
   {
     "SN": 58,
     "Name": "ClashMas2023_hogmaster",
     "Code": "18000117",
     "Count": 1,
-    "TID": "TID_DECO_HOGMASTER"
+    "TID": "TID_DECO_HOGMASTER",
+    "name": "Barbarian Santa"
   },
   {
     "SN": 59,
     "Name": "ClashMas2023_sock",
     "Code": "18000118",
     "Count": 1,
-    "TID": "TID_DECO_SOCK"
+    "TID": "TID_DECO_SOCK",
+    "name": "Skeleton Sock"
   },
   {
     "SN": 60,
     "Name": "CNY_2023_anchor",
     "Code": "18000119",
     "Count": 1,
-    "TID": "TID_DECO_LNY24_ANCHOR"
+    "TID": "TID_DECO_LNY24_ANCHOR",
+    "name": "Lucky Anchor"
   },
   {
     "SN": 61,
     "Name": "CNY_2023_Crab",
     "Code": "18000120",
     "Count": 1,
-    "TID": "TID_DECO_LNY24_CRAB"
+    "TID": "TID_DECO_LNY24_CRAB",
+    "name": "Crab at home"
   },
   {
     "SN": 62,
     "Name": "CNY_2023_dragon",
     "Code": "18000121",
     "Count": 1,
-    "TID": "TID_DECO_LNY24_BABY_DRAGON"
+    "TID": "TID_DECO_LNY24_BABY_DRAGON",
+    "name": "Baby Dragon Statue"
   },
   {
     "SN": 63,
     "Name": "LNY_2024_dragonpinata",
     "Code": "18000122",
     "Count": 1,
-    "TID": "TID_DECO_LNY24_DRAGON_PINATA"
+    "TID": "TID_DECO_LNY24_DRAGON_PINATA",
+    "name": "Dragon Pinata"
   },
   {
     "SN": 64,
     "Name": "Space_2024_crater",
     "Code": "18000123",
     "Count": 1,
-    "TID": "TID_DECO_SPACE_2024_CRATER"
+    "TID": "TID_DECO_SPACE_2024_CRATER",
+    "name": "Clashy Crater"
   },
   {
     "SN": 65,
     "Name": "Space_2024_globe",
     "Code": "18000124",
     "Count": 1,
-    "TID": "TID_DECO_SPACE_2024_GLOBE"
+    "TID": "TID_DECO_SPACE_2024_GLOBE",
+    "name": "Stone Globe"
   },
   {
     "SN": 66,
     "Name": "Space_2024_goblin_statue",
     "Code": "18000125",
     "Count": 1,
-    "TID": "TID_DECO_SPACE_2024_GOBLIN_STATUE"
+    "TID": "TID_DECO_SPACE_2024_GOBLIN_STATUE",
+    "name": "Goblin Explorer"
   },
   {
     "SN": 67,
     "Name": "Egypt_2024_babydragon",
     "Code": "18000126",
     "Count": 1,
-    "TID": "TID_DECO_EGYPT_2024_BABYDRAGON"
+    "TID": "TID_DECO_EGYPT_2024_BABYDRAGON",
+    "name": "Baby Ptah"
   },
   {
     "SN": 68,
     "Name": "Egypt_2024_goblin",
     "Code": "18000127",
     "Count": 1,
-    "TID": "TID_DECO_EGYPT_2024_GOBLIN"
+    "TID": "TID_DECO_EGYPT_2024_GOBLIN",
+    "name": "Goblin Pharaoh"
   },
   {
     "SN": 69,
     "Name": "Egypt_2024_hog",
     "Code": "18000128",
     "Count": 1,
-    "TID": "TID_DECO_EGYPT_2024_HOG"
+    "TID": "TID_DECO_EGYPT_2024_HOG",
+    "name": "Hog Sphinx"
   },
   {
     "SN": 70,
     "Name": "CW_gift_crownsword",
     "Code": "18000129",
     "Count": 1,
-    "TID": "TID_DECO_GIFT_2024_CROWNSWORD"
+    "TID": "TID_DECO_GIFT_2024_CROWNSWORD",
+    "name": "Crown Sword"
   },
   {
     "SN": 71,
     "Name": "Game Campaign",
     "Code": "18000130",
     "Count": 1,
-    "TID": "TID_DECO_GAME_CAMPAIGN"
+    "TID": "TID_DECO_GAME_CAMPAIGN",
+    "name": "Surprising Squad"
   },
   {
     "SN": 72,
     "Name": "clashball_goldenboot",
     "Code": "18000131",
     "Count": 1,
-    "TID": "TID_DECO_CLASHBALL_GOLDENBOOT"
+    "TID": "TID_DECO_CLASHBALL_GOLDENBOOT",
+    "name": "Golden Boot"
   },
   {
     "SN": 73,
     "Name": "clashball_trophyball",
     "Code": "18000132",
     "Count": 1,
-    "TID": "TID_DECO_CLASHBALL_TROPHYBALL"
+    "TID": "TID_DECO_CLASHBALL_TROPHYBALL",
+    "name": "Bestest Ball"
   },
   {
     "SN": 74,
     "Name": "clashball_statuecharacter",
     "Code": "18000133",
     "Count": 1,
-    "TID": "TID_DECO_CLASHBALL_STATUECHARACTER"
+    "TID": "TID_DECO_CLASHBALL_STATUECHARACTER",
+    "name": "Haaland Statue"
   },
   {
     "SN": 75,
     "Name": "clashball_trophycrown",
     "Code": "18000134",
     "Count": 1,
-    "TID": "TID_DECO_CLASHBALL_TROPHYCROWN"
+    "TID": "TID_DECO_CLASHBALL_TROPHYCROWN",
+    "name": "Triumphant Trophy"
   },
   {
     "SN": 76,
     "Name": "clashball_trophycup",
     "Code": "18000135",
     "Count": 1,
-    "TID": "TID_DECO_CLASHBALL_TROPHYCUP"
+    "TID": "TID_DECO_CLASHBALL_TROPHYCUP",
+    "name": "Celebration Cup"
   },
   {
     "SN": 77,
     "Name": "clashball_trophybeverage",
     "Code": "18000136",
     "Count": 1,
-    "TID": "TID_DECO_CLASHBALL_TROPHYBEVERAGE"
+    "TID": "TID_DECO_CLASHBALL_TROPHYBEVERAGE",
+    "name": "Victory Milk"
   },
   {
     "SN": 78,
     "Name": "WildWest_cactus",
     "Code": "18000137",
     "Count": 1,
-    "TID": "TID_DECO_WILDWEST_CACTUS"
+    "TID": "TID_DECO_WILDWEST_CACTUS",
+    "name": "Cactus Guy"
   },
   {
     "SN": 79,
     "Name": "WildWest_skelly",
     "Code": "18000138",
     "Count": 1,
-    "TID": "TID_DECO_WILDWEST_SKELLY"
+    "TID": "TID_DECO_WILDWEST_SKELLY",
+    "name": "Cowboy Skeleton"
   },
   {
     "SN": 80,
     "Name": "WildWest_totem",
     "Code": "18000139",
     "Count": 1,
-    "TID": "TID_DECO_WILDWEST_TOTEM"
+    "TID": "TID_DECO_WILDWEST_TOTEM",
+    "name": "Dragon Totem"
   },
   {
     "SN": 81,
     "Name": "Clashball2024_completion_deco_goal",
     "Code": "18000140",
     "Count": 1,
-    "TID": "TID_DECO_CLASHBALL_GOAL"
+    "TID": "TID_DECO_CLASHBALL_GOAL",
+    "name": "Football Camp"
   },
   {
     "SN": 82,
     "Name": "Anime_FORTUNE_TELLER",
     "Code": "18000141",
     "Count": 1,
-    "TID": "TID_DECO_ANIME_FORTUNETELLER"
+    "TID": "TID_DECO_ANIME_FORTUNETELLER",
+    "name": "Wizard Vendor"
   },
   {
     "SN": 83,
     "Name": "Anime_bonsaitree",
     "Code": "18000143",
     "Count": 1,
-    "TID": "TID_DECO_ANIME_BONSAI_TREE"
+    "TID": "TID_DECO_ANIME_BONSAI_TREE",
+    "name": "Cherry Bonsai"
   },
   {
     "SN": 84,
     "Name": "Anime_chibi_archer",
     "Code": "18000144",
     "Count": 1,
-    "TID": "TID_DECO_ANIME_CHIBI_ARCHER"
+    "TID": "TID_DECO_ANIME_CHIBI_ARCHER",
+    "name": "Chibi Archer"
   },
   {
     "SN": 85,
     "Name": "Anime_giant_school_girl",
     "Code": "18000145",
     "Count": 1,
-    "TID": "TID_DECO_ANIME_GIANT_SCHOOL_GIRL"
+    "TID": "TID_DECO_ANIME_GIANT_SCHOOL_GIRL",
+    "name": "Kawaii Giant"
   },
   {
     "SN": 86,
     "Name": "SC_Store_beachparasol",
     "Code": "18000146",
     "Count": 1,
-    "TID": "TID_DECO_SC_BEACH_PARASOL"
+    "TID": "TID_DECO_SC_BEACH_PARASOL",
+    "name": "Beach Break"
   },
   {
     "SN": 87,
     "Name": "SC_Store_brawlstars",
     "Code": "18000147",
     "Count": 1,
-    "TID": "TID_DECO_SC_BRAWLSTARS"
+    "TID": "TID_DECO_SC_BRAWLSTARS",
+    "name": "Brawl's Star"
   },
   {
     "SN": 88,
     "Name": "SC_Store_gauntlet",
     "Code": "18000148",
     "Count": 1,
-    "TID": "TID_DECO_SC_GAUNTLET"
+    "TID": "TID_DECO_SC_GAUNTLET",
+    "name": "Gargantuan Gauntlet"
   },
   {
     "SN": 89,
     "Name": "SC_Store_haybalechicken",
     "Code": "18000149",
     "Count": 1,
-    "TID": "TID_DECO_SC_HAYDAY_CHICKEN"
+    "TID": "TID_DECO_SC_HAYDAY_CHICKEN",
+    "name": "Heroic Chicken"
   },
   {
     "SN": 90,
     "Name": "SC_Store_royalebed",
     "Code": "18000150",
     "Count": 1,
-    "TID": "TID_DECO_SC_ROYALE_BED"
+    "TID": "TID_DECO_SC_ROYALE_BED",
+    "name": "Sleepy King"
   },
   {
     "SN": 91,
     "Name": "ClashGames_firebowl",
     "Code": "18000151",
     "Count": 1,
-    "TID": "TID_DECO_CLASHGAMES_FIREBOWL"
+    "TID": "TID_DECO_CLASHGAMES_FIREBOWL",
+    "name": "Champion's Flame"
   },
   {
     "SN": 92,
     "Name": "ClashGames_goblindive",
     "Code": "18000152",
     "Count": 1,
-    "TID": "TID_DECO_CLASHGAMES_GOBLINDIVE"
+    "TID": "TID_DECO_CLASHGAMES_GOBLINDIVE",
+    "name": "Goblin High Dive"
   },
   {
     "SN": 93,
     "Name": "ClashGames_archerfoot",
     "Code": "18000153",
     "Count": 1,
-    "TID": "TID_DECO_CLASHGAMES_ARCHERFOOT"
+    "TID": "TID_DECO_CLASHGAMES_ARCHERFOOT",
+    "name": "Foot Tribute"
   },
   {
     "SN": 94,
     "Name": "TTRPG_treeportal",
     "Code": "18000154",
     "Count": 1,
-    "TID": "TID_DECO_TTRPG_TREEPORTAL"
+    "TID": "TID_DECO_TTRPG_TREEPORTAL",
+    "name": "Pretty Portal"
   },
   {
     "SN": 95,
     "Name": "TTRPG_superdeco_d20",
     "Code": "18000155",
     "Count": 1,
-    "TID": "TID_DECO_TTRPG_SUPERDECO_D20"
+    "TID": "TID_DECO_TTRPG_SUPERDECO_D20",
+    "name": "Decision Dice"
   },
   {
     "SN": 96,
     "Name": "TTRPG_mimic_chest",
     "Code": "18000156",
     "Count": 1,
-    "TID": "TID_DECO_TTRPG_MIMIC_CHEST"
+    "TID": "TID_DECO_TTRPG_MIMIC_CHEST",
+    "name": "Cuddly Chest"
   },
   {
     "SN": 97,
     "Name": "Clashoween2024_completion_deco",
     "Code": "18000157",
     "Count": 1,
-    "TID": "TID_DECO_CLASHOWEEN_2024"
+    "TID": "TID_DECO_CLASHOWEEN_2024",
+    "name": "Hydra Headstone"
   },
   {
     "SN": 98,
     "Name": "Clashoween2024_prisonbox",
     "Code": "18000158",
     "Count": 1,
-    "TID": "TID_DECO_CLASHOWEEN_2024_PRISONBOX"
+    "TID": "TID_DECO_CLASHOWEEN_2024_PRISONBOX",
+    "name": "Jailbroken Box"
   },
   {
     "SN": 99,
     "Name": "Clashoween2024_superdeco_cauldron",
     "Code": "18000159",
     "Count": 1,
-    "TID": "TID_DECO_CLASHOWEEN_2024_SUPERDECO_CAULDRON"
+    "TID": "TID_DECO_CLASHOWEEN_2024_SUPERDECO_CAULDRON",
+    "name": "Bubble Boil Cauldron"
   },
   {
     "SN": 100,
     "Name": "Superdeco_mochapot",
     "Code": "18000160",
     "Count": 1,
-    "TID": "TID_DECO_SUPERDECO_MOCHAPOT"
+    "TID": "TID_DECO_SUPERDECO_MOCHAPOT",
+    "name": "Abra-Cada-Brewer"
   },
   {
     "SN": 101,
     "Name": "Diwali_Statue_Event_Deco_2x2",
     "Code": "18000161",
     "Count": 1,
-    "TID": "TID_DECO_DIWALI_2024"
+    "TID": "TID_DECO_DIWALI_2024",
+    "name": "Festival Lantern"
   },
   {
     "SN": 102,
     "Name": "Clashmas_2024_completion_deco",
     "Code": "18000162",
     "Count": 1,
-    "TID": "TID_DECO_CLASHMAS_2024"
+    "TID": "TID_DECO_CLASHMAS_2024",
+    "name": "Rocking Reindeer"
   },
   {
     "SN": 103,
     "Name": "Clashmas_2024_choir",
     "Code": "18000163",
     "Count": 1,
-    "TID": "TID_DECO_CLASHMAS_2024_CHOIR"
+    "TID": "TID_DECO_CLASHMAS_2024_CHOIR",
+    "name": "Clockwork Choir"
   },
   {
     "SN": 104,
     "Name": "Clashmas2024_superdeco_globe",
     "Code": "18000164",
     "Count": 1,
-    "TID": "TID_DECO_CLASHMAS_2024_SUPERDECO_GLOBE"
+    "TID": "TID_DECO_CLASHMAS_2024_SUPERDECO_GLOBE",
+    "name": "Snow Globe"
   },
   {
     "SN": 105,
     "Name": "Clashmas_2024_Sack",
     "Code": "18000165",
     "Count": 1,
-    "TID": "TID_DECO_CLASHMAS_2024_SACK"
+    "TID": "TID_DECO_CLASHMAS_2024_SACK",
+    "name": "Gift Bag"
   },
   {
     "SN": 106,
     "Name": "Lny_2025_completion_deco",
     "Code": "18000166",
     "Count": 1,
-    "TID": "TID_DECO_LNY_2025"
+    "TID": "TID_DECO_LNY_2025",
+    "name": "Snake Shrine"
   },
   {
     "SN": 107,
     "Name": "Lny_2025_monkstatue_deco",
     "Code": "18000167",
     "Count": 1,
-    "TID": "TID_DECO_LNY_2025_MONK"
+    "TID": "TID_DECO_LNY_2025_MONK",
+    "name": "Monk Statue"
   },
   {
     "SN": 108,
     "Name": "Fire_Ice_superdeco_sauna",
     "Code": "18000168",
     "Count": 1,
-    "TID": "TID_DECO_FIRE_ICE_SAUNA"
+    "TID": "TID_DECO_FIRE_ICE_SAUNA",
+    "name": "Cozy Sauna"
   },
   {
     "SN": 109,
     "Name": "Lny_2025_superdeco_fortunecookie",
     "Code": "18000169",
     "Count": 1,
-    "TID": "TID_DECO_LNY_2025_COOKIE"
+    "TID": "TID_DECO_LNY_2025_COOKIE",
+    "name": "Lucky Cookies"
   },
   {
     "SN": 110,
     "Name": "Military_2025_super_deco_range",
     "Code": "18000170",
     "Count": 1,
-    "TID": "TID_DECO_MILITARY_2025_SUPERDECO_RANGE"
+    "TID": "TID_DECO_MILITARY_2025_SUPERDECO_RANGE",
+    "name": "Shooting Range"
   },
   {
     "SN": 111,
     "Name": "April_2025_completion_deco",
     "Code": "18000171",
     "Count": 1,
-    "TID": "TID_DECO_APRIL_2025"
+    "TID": "TID_DECO_APRIL_2025",
+    "name": "WWE Title"
   },
   {
     "SN": 112,
     "Name": "April_2025_goblins_deco",
     "Code": "18000172",
     "Count": 1,
-    "TID": "TID_DECO_APRIL_GOBLINS_2025"
+    "TID": "TID_DECO_APRIL_GOBLINS_2025",
+    "name": "Rumbling Goblins"
   },
   {
     "SN": 113,
     "Name": "April_2025_coc_giant_deco",
     "Code": "18000173",
     "Count": 1,
-    "TID": "TID_DECO_COC_GIANT_2025"
+    "TID": "TID_DECO_COC_GIANT_2025",
+    "name": "Golden Giant"
   },
   {
     "SN": 114,
     "Name": "Deco_AQ_PouringStatue",
     "Code": "18000174",
     "Count": 1,
-    "TID": "TID_CREATOR_FOUNTAIN_DECO"
+    "TID": "TID_CREATOR_FOUNTAIN_DECO",
+    "name": "Creator Fountain"
   },
   {
     "SN": 115,
     "Name": "April_2025_super_deco",
     "Code": "18000175",
     "Count": 1,
-    "TID": "TID_DECO_APRIL_2025_SUPERDECO"
+    "TID": "TID_DECO_APRIL_2025_SUPERDECO",
+    "name": "Surprise Wheel"
   },
   {
     "SN": 116,
     "Name": "Japan_2025_deco",
     "Code": "18000176",
     "Count": 1,
-    "TID": "TID_DECO_JAPAN_2025"
+    "TID": "TID_DECO_JAPAN_2025",
+    "name": "Sacred Gate"
   },
   {
     "SN": 117,
     "Name": "DarkDays_2025_super_deco",
     "Code": "18000177",
     "Count": 1,
-    "TID": "TID_DECO_DARKDAYS_2025_SUPERDECO"
+    "TID": "TID_DECO_DARKDAYS_2025_SUPERDECO",
+    "name": "Jingle Maker"
   },
   {
     "SN": 118,
     "Name": "Darkdays_2025_completion_deco",
     "Code": "18000178",
     "Count": 1,
-    "TID": "TID_DECO_DARKDAYS_2025"
+    "TID": "TID_DECO_DARKDAYS_2025",
+    "name": "Looter Wagon"
   },
   {
     "SN": 119,
     "Name": "Clasharama_frozen_wizard_hv_deco",
     "Code": "18000179",
     "Count": 1,
-    "TID": "TID_DECO_CLASHARAMA_FROZEN_WIZARD_2025"
+    "TID": "TID_DECO_CLASHARAMA_FROZEN_WIZARD_2025",
+    "name": "Frozen Wizard"
   },
   {
     "SN": 120,
     "Name": "clasharama_ep01_super_deco",
     "Code": "18000180",
     "Count": 1,
-    "TID": "TID_DECO_CLASHARAMA_EP01_SUPERDECO"
+    "TID": "TID_DECO_CLASHARAMA_EP01_SUPERDECO",
+    "name": "Clashy Carving"
   },
   {
     "SN": 121,
     "Name": "clasharama_ep02_super_deco_paint",
     "Code": "18000181",
     "Count": 1,
-    "TID": "TID_DECO_CLASHARAMA_EP02_SUPERDECO_PAINT"
+    "TID": "TID_DECO_CLASHARAMA_EP02_SUPERDECO_PAINT",
+    "name": "Sketch Summoner"
   },
   {
     "SN": 122,
     "Name": "CyberClash_superdeco_holoprojector",
     "Code": "18000182",
     "Count": 1,
-    "TID": "TID_DECO_CYBERCLASH_HOLOPROJECTOR"
+    "TID": "TID_DECO_CYBERCLASH_HOLOPROJECTOR",
+    "name": "Cyber Hologram"
   },
   {
     "SN": 123,
     "Name": "CLASHARAMA_SODASTAND_DECO",
     "Code": "18000183",
     "Count": 1,
-    "TID": "TID_DECO_CLASHARAMA_SODASTAND_2025"
+    "TID": "TID_DECO_CLASHARAMA_SODASTAND_2025",
+    "name": "Soda Stand"
   },
   {
     "SN": 124,
     "Name": "CLASHARAMA_TABLE_DECO",
     "Code": "18000184",
     "Count": 1,
-    "TID": "TID_DECO_CLASHARAMA_TABLE_2025"
+    "TID": "TID_DECO_CLASHARAMA_TABLE_2025",
+    "name": "Party Bench"
   },
   {
     "SN": 125,
     "Name": "COMMUNITY_CROWN_AND_SWORD_DECO",
     "Code": "18000185",
     "Count": 1,
-    "TID": "TID_DECO_COMMUNITY_CROWN_AND_SWORD"
+    "TID": "TID_DECO_COMMUNITY_CROWN_AND_SWORD",
+    "name": "Justice Crown"
   },
   {
     "SN": 127,
     "Name": "Windmeter",
     "Code": "18000007",
     "Count": 1,
-    "TID": "TID_DECORATION_WINDMETER"
+    "TID": "TID_DECORATION_WINDMETER",
+    "name": "Weather Vane"
   },
   {
     "SN": 128,
     "Name": "Down Arrow Flag",
     "Code": "18000008",
     "Count": 1,
-    "TID": "TID_DECORATION_DOWNARROW_FLAG"
+    "TID": "TID_DECORATION_DOWNARROW_FLAG",
+    "name": "Rally Flag"
   },
   {
     "SN": 129,
     "Name": "Up Arrow Flag",
     "Code": "18000009",
     "Count": 1,
-    "TID": "TID_DECORATION_UPARROW_FLAG"
+    "TID": "TID_DECORATION_UPARROW_FLAG",
+    "name": "Point Flag"
   },
   {
     "SN": 130,
     "Name": "Skull Altar",
     "Code": "18000010",
     "Count": 1,
-    "TID": "TID_DECORATION_SKULL_ALTAR"
+    "TID": "TID_DECORATION_SKULL_ALTAR",
+    "name": "Ancient Skull"
   }
 ]
