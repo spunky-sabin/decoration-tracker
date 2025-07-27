@@ -6,7 +6,7 @@
     "Count": 1,
     "TID": "TID_DECORATION_BARBARIAN_STATUE",
     "name": "Mighty Statue",
-    "image": "images/decorations/barbarian_statue.png"
+    "image": "images/decorations/Decoration_HV_Mighty_Statue.png"
   },
   {
     "SN": 2,
@@ -19,12 +19,12 @@
   },
   {
     "SN": 126,
-    "Name": "Goblin Pole",
+    "Name": "Decoration",
     "Code": "18000002",
     "Count": 1,
     "TID": "TID_DECORATION_GENERIC",
     "name": "Decoration",
-    "image": "images/decorations/Decoration_HV_Goblin_Explorer.png"
+    "image": "images/decorations/"
   },
   {
     "SN": 3,
@@ -51,7 +51,7 @@
     "Count": 4,
     "TID": "TID_DECORATION_FLOWERBOX1",
     "name": "Cornflower Bed",
-    "image": "images/decorations/Decoration_HV_Sunflower_Bed.png"
+    "image": "images/decorations/Decoration_HV_Cornflower_Bed.png"
   },
   {
     "SN": 6,
@@ -60,7 +60,7 @@
     "Count": 4,
     "TID": "TID_DECORATION_FLOWERBOX2",
     "name": "Sunflower Bed",
-    "image": "images/decorations/Decoration_HV_Cornflower_Bed.png"
+    "image": "images/decorations/Decoration_HV_Sunflower_Bed.png"
   },
   {
     "SN": 7,
@@ -212,7 +212,7 @@
     "Code": "18000063",
     "Count": 1,
     "TID": "TID_DECORATION_8YEAR_BIRTHDAY_STATUE",
-    "name": "\\qA Piece of Birthday Cake\\q",
+    "name": "A Piece of Birthday Cake",
     "image": "images/decorations/Decoration_HV_A_Piece_Of_Birthday_Cake.png"
   },
   {
@@ -249,7 +249,7 @@
     "Count": 1,
     "TID": "TID_DECO_TH14_FOUNTAIN",
     "name": "Flowing Fountain",
-    "image": "images/decorations/jungle_deco.png"
+    "image": "images/decorations/Decoration_HV_Flowing_Fountain.png"
   },
   {
     "SN": 28,
@@ -258,7 +258,7 @@
     "Count": 1,
     "TID": "TID_DECORATION_9YEAR_BIRTHDAY_STATUE",
     "name": "Fiery Figure",
-    "image": "images/decorations/Obstacle_HV_9th_Anniversary_Cake.png"
+    "image": "images/decorations/Decoration_HV_Fiery_Figure.png"
   },
   {
     "SN": 29,
@@ -276,7 +276,7 @@
     "Count": 1,
     "TID": "TID_DECORATION_10YEAR_BIRTHDAY_STATUE",
     "name": "Goblin King Tribute",
-    "image": "images/decorations/Obstacle_HV_10th_Anniversary_Cake.png"
+    "image": "images/decorations/Decoration_HV_Goblin_King_Tribute.png"
   },
   {
     "SN": 31,
@@ -285,7 +285,7 @@
     "Count": 1,
     "TID": "TID_DECORATION_CLASH_FEST_22_STATUE",
     "name": "Eternal Flame",
-    "image": "images/decorations/clash_fest_22_statue.png"
+    "image": "images/decorations/Decoration_HV_Eternal_Flame.png"
   },
   {
     "SN": 32,
@@ -294,7 +294,7 @@
     "Count": 1,
     "TID": "TID_DECORATION_CLASHMAS_22",
     "name": "Clashmas Sleigh",
-    "image": "images/decorations/Obstacle_HV_Clashmas_Tree_2022.png"
+    "image": "images/decorations/Decoration_HV_Clashmas_Sleigh.png"
   },
   {
     "SN": 33,
@@ -303,7 +303,7 @@
     "Count": 1,
     "TID": "TID_STATUE_LNY_2023",
     "name": "Magic Show Statue",
-    "image": "images/decorations/statue_lny_2023.png"
+    "image": "images/decorations/Decoration_HV_Magic_Show_Statue.png"
   },
   {
     "SN": 34,
@@ -312,7 +312,7 @@
     "Count": 1,
     "TID": "TID_DECO_PAINTED_BABY_DRAGON",
     "name": "Decorated Dragon Statue",
-    "image": "images/decorations/deco_painted_baby_dragon.png"
+    "image": "images/decorations/Decoration_HV_Decorated_Dragon_Statue.png"
   },
   {
     "SN": 35,
@@ -321,7 +321,7 @@
     "Count": 2,
     "TID": "TID_DECO_DARK_AGES_DRAGON",
     "name": "Dragon Trophy",
-    "image": "images/decorations/deco_dark_ages_dragon.png"
+    "image": "images/decorations/Decoration_HV_Dragon_Trophy_1.png"
   },
   {
     "SN": 36,
@@ -333,31 +333,13 @@
     "image": "images/decorations/Decoration_HV_Books_of_Clash_Statue_active.png"
   },
   {
-    "SN": 37,
-    "Name": "Goblin Gold Chest",
-    "Code": "18000081",
-    "Count": 1,
-    "TID": "TID_DECO_GOBLIN_CHEST",
-    "name": "Goblin Chest",
-    "image": "images/decorations/deco_goblin_chest.png"
-  },
-  {
-    "SN": 38,
-    "Name": "Goblin Gold Cart",
-    "Code": "18000082",
-    "Count": 1,
-    "TID": "TID_DECO_GOBLIN_CART",
-    "name": "Goblin Cart",
-    "image": "images/decorations/deco_goblin_cart.png"
-  },
-  {
     "SN": 39,
-    "Name": "Goblin Cellar",
+    "Name": "Goblin pit",
     "Code": "18000089",
     "Count": 1,
     "TID": "TID_DECO_GOBLIN_CELLAR",
     "name": "Goblin Cellar",
-    "image": "images/decorations/deco_goblin_cellar.png"
+    "image": "images/decorations/Decoration_HV_Goblin_Pit.png"
   },
   {
     "SN": 40,
@@ -424,11 +406,11 @@
   },
   {
     "SN": 47,
-    "Name": "Halloween2023_clown_statue",
+    "Name": "hoggywise",
     "Code": "18000097",
     "Count": 1,
     "TID": "TID_DECO_CLOWN",
-    "name": "\\qFriendly\\q Clown",
+    "name": "Friendly Clown",
     "image": "images/decorations/Decoration_HV_Hoggywise.png"
   },
   {
@@ -438,7 +420,7 @@
     "Count": 3,
     "TID": "TID_DECO_DEAD_JAKUZZI",
     "name": "Spooky Spa",
-    "image": "images/decorations/deco_dead_jakuzzi.png"
+    "image": "images/decorations/Decoration_HV_Jacuzzi.png"
   },
   {
     "SN": 49,
@@ -447,7 +429,7 @@
     "Count": 3,
     "TID": "TID_DECO_SCARECROW",
     "name": "Pumpkin Scarecrow",
-    "image": "images/decorations/deco_scarecrow.png"
+    "image": "images/decorations/Decoration_HV_Axe_Pumpkin.png"
   },
   {
     "SN": 50,
@@ -456,7 +438,7 @@
     "Count": 1,
     "TID": "TID_BUILDING_CLASHOWEEN_BUILDING",
     "name": "Sour Elixir Cauldron",
-    "image": "images/decorations/clashoween_building.png"
+    "image": "images/decorations/Decoration_HV_Sour_Elixir_Cauldron.png"
   },
   {
     "SN": 51,
@@ -528,7 +510,7 @@
     "Count": 1,
     "TID": "TID_DECO_HOGMASTER",
     "name": "Barbarian Santa",
-    "image": "images/decorations/deco_hogmaster.png"
+    "image": "images/decorations/Decroration_HV_Barbarian_Santa.png"
   },
   {
     "SN": 59,
@@ -600,16 +582,16 @@
     "Count": 1,
     "TID": "TID_DECO_SPACE_2024_GOBLIN_STATUE",
     "name": "Goblin Explorer",
-    "image": "images/decorations/deco_space_2024_goblin_statue.png"
+    "image": "images/decorations/Decoration_HV_Goblin_Explorer.png"
   },
   {
     "SN": 67,
-    "Name": "Egypt_2024_babydragon",
+    "Name": "babydragon_statue",
     "Code": "18000126",
     "Count": 1,
     "TID": "TID_DECO_EGYPT_2024_BABYDRAGON",
     "name": "Baby Ptah",
-    "image": "images/decorations/deco_egypt_2024_babydragon.png"
+    "image": "images/decorations/Decoration_HV_Baby_Dragon_Statue.png"
   },
   {
     "SN": 68,
@@ -744,7 +726,7 @@
     "Count": 1,
     "TID": "TID_DECO_ANIME_FORTUNETELLER",
     "name": "Wizard Vendor",
-    "image": "images/decorations/deco_anime_fortuneteller.png"
+    "image": "images/decorations/Decoration_HV_wizard_anime_event_building.png"
   },
   {
     "SN": 83,
@@ -834,7 +816,7 @@
     "Count": 1,
     "TID": "TID_DECO_CLASHGAMES_GOBLINDIVE",
     "name": "Goblin High Dive",
-    "image": "images/decorations/deco_clashgames_goblindive.png"
+    "image": "images/decorations/ClashGames_Deco_Diver.png"
   },
   {
     "SN": 93,
@@ -897,7 +879,7 @@
     "Count": 1,
     "TID": "TID_DECO_CLASHOWEEN_2024_SUPERDECO_CAULDRON",
     "name": "Bubble Boil Cauldron",
-    "image": "images/decorations/clashoween2024_superdeco.png"
+    "image": "images/decorations/clashoween2024_supbubberdeco.png"
   },
   {
     "SN": 100,
@@ -924,7 +906,7 @@
     "Count": 1,
     "TID": "TID_DECO_CLASHMAS_2024",
     "name": "Rocking Reindeer",
-    "image": "images/decorations/clashmas2024_completion.png"
+    "image": "images/decorations/clashmas_2024_rocking_reindeer.png"
   },
   {
     "SN": 103,
