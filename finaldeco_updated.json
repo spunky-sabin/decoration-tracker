@@ -1007,5 +1007,14 @@
     "TID": "TID_DECORATION_SKULL_ALTAR",
     "name": "Ancient Skull",
     "image": "images/decorations/Decoration_HV_Ancient_Skull.png"
+  },
+  {
+    "SN": 131,
+    "Name": "PEKKA Statue",
+    "Code": "18000033",
+    "Count": 1,
+    "TID": "TID_DECORATION_PEKKA_STATUE",
+    "name": "Statue of P.E.K.K.A",
+    "image": "images/decorations/Decoration_HV_PEKKA_Statue.png"
   }
 ]
