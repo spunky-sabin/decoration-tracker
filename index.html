@@ -85,6 +85,47 @@
             background: rgba(17, 24, 39, 0.5);
         }
 
+        .safety-info {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(22, 163, 74, 0.2) 100%);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .safety-info h3 {
+            color: #4ade80;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .safety-info .shield-icon {
+            width: 20px;
+            height: 20px;
+            background: #4ade80;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0f1419;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .safety-info p {
+            color: #e0e7ff;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .safety-info .highlight {
+            color: #4ade80;
+            font-weight: 600;
+        }
+
         label {
             display: block;
             margin-bottom: 8px;
@@ -127,7 +168,11 @@
             width: 100%;
             max-width: 300px;
             margin: 20px auto 0;
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            position: relative;
         }
 
         .analyze-btn:hover:not(:disabled) {
@@ -136,8 +181,23 @@
         }
 
         .analyze-btn:disabled {
-            opacity: 0.6;
+            opacity: 0.8;
             cursor: not-allowed;
+            transform: none;
+        }
+
+        .loading-spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top: 2px solid white;
+            border-radius: 50%;
+            animation: buttonSpin 1s linear infinite;
+        }
+
+        @keyframes buttonSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .results-section {
@@ -180,10 +240,23 @@
 
         .filter-controls {
             display: flex;
-            gap: 10px;
+            flex-direction: column;
+            gap: 15px;
             margin-bottom: 20px;
+        }
+
+        .filter-row {
+            display: flex;
+            gap: 10px;
             flex-wrap: wrap;
             align-items: center;
+        }
+
+        .filter-label {
+            font-weight: 600;
+            color: #93bbfc;
+            font-size: 0.9rem;
+            min-width: 120px;
         }
 
         .filter-btn {
@@ -204,6 +277,27 @@
         .filter-btn.active {
             background: #2563eb;
             border-color: #2563eb;
+            color: white;
+        }
+
+        .type-filter-btn {
+            padding: 8px 20px;
+            border: 2px solid #ca8a04;
+            background: transparent;
+            color: #fbbf24;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 0.9rem;
+            flex: 1;
+            min-width: 100px;
+            text-align: center;
+        }
+
+        .type-filter-btn.active {
+            background: #ca8a04;
+            border-color: #ca8a04;
             color: white;
         }
 
@@ -258,6 +352,17 @@
             opacity: 0.7;
         }
 
+        .decoration-card.obstacle {
+            background: linear-gradient(135deg, rgba(202, 138, 4, 0.2) 0%, rgba(161, 98, 7, 0.3) 100%);
+            border-color: rgba(202, 138, 4, 0.5);
+        }
+
+        .decoration-card.obstacle.missing {
+            background: linear-gradient(135deg, rgba(202, 138, 4, 0.1) 0%, rgba(161, 98, 7, 0.2) 100%);
+            border-color: rgba(202, 138, 4, 0.3);
+            opacity: 0.7;
+        }
+
         .decoration-image {
             width: 60px;
             height: 60px;
@@ -298,6 +403,23 @@
             margin-bottom: 8px;
         }
 
+        .item-type {
+            font-size: 0.65rem;
+            color: #94a3b8;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+
+        .item-type.decoration {
+            color: #60a5fa;
+        }
+
+        .item-type.obstacle {
+            color: #fbbf24;
+        }
+
         .status-indicator {
             display: inline-block;
             padding: 3px 10px;
@@ -328,6 +450,29 @@
             border-radius: 10px;
             margin-top: 20px;
             text-align: center;
+        }
+
+        .image-error-popup {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(239, 68, 68, 0.95);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            max-width: 90%;
+            text-align: center;
+        }
+
+        .image-error-popup.show {
+            opacity: 1;
         }
 
         .spinner {
@@ -375,12 +520,24 @@
             }
 
             .filter-controls {
-                flex-direction: column;
-                width: 100%;
+                gap: 15px;
             }
 
-            .filter-btn {
+            .filter-row {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+
+            .filter-label {
+                min-width: auto;
+                text-align: center;
+                margin-bottom: 5px;
+            }
+
+            .filter-btn, .type-filter-btn {
                 width: 100%;
+                margin: 0;
             }
 
             .decorations-grid {
@@ -428,11 +585,23 @@
         </div>
 
         <div class="input-section">
+            <div class="safety-info">
+                <h3>
+                    <span class="shield-icon">✓</span>
+                    Is it safe to give your JSON data?
+                </h3>
+                <p><span class="highlight">Yes</span> — the JSON file contains only your in-game data like decorations, buildings, levels, and player tag. It <span class="highlight">does not include</span> any personal info, login credentials, or Supercell ID.</p>
+                <p>Your data is <span class="highlight">processed only in your browser</span> and is never uploaded or stored anywhere. This tool is 100% safe and privacy-friendly. You can even inspect the code yourself!</p>
+            </div>
+
             <div class="input-group">
+                
                 <label for="jsonInput">Paste your JSON data here:</label>
                 <textarea id="jsonInput" placeholder='Paste your Clash of Clans JSON data here...'></textarea>
             </div>
-            <button class="analyze-btn" onclick="analyzeDecorations()">Analyze Decorations</button>
+            <button class="analyze-btn" onclick="analyzeDecorations()" id="analyzeBtn">
+                <span id="btnText">Analyze Decorations</span>
+            </button>
             <div id="errorMessage"></div>
         </div>
 
@@ -440,13 +609,28 @@
             <div class="stats" id="statsContainer"></div>
             
             <div class="filter-controls">
-                <button class="filter-btn active" onclick="filterDecorations('all', event)">All</button>
-                <button class="filter-btn" onclick="filterDecorations('owned', event)">Owned</button>
-                <button class="filter-btn" onclick="filterDecorations('missing', event)">Missing</button>
-                <input type="text" class="search-box" id="searchBox" placeholder="Search decorations..." oninput="searchDecorations()">
+                <div class="filter-row">
+                    <span class="filter-label">Status Filter:</span>
+                    <button class="filter-btn active" onclick="filterItems('all', event)">All</button>
+                    <button class="filter-btn" onclick="filterItems('owned', event)">Owned</button>
+                    <button class="filter-btn" onclick="filterItems('missing', event)">Missing</button>
+                </div>
+                
+                <div class="filter-row">
+                    <span class="filter-label">Type Filter:</span>
+                    <button class="type-filter-btn active" onclick="filterByType('both', event)">Both</button>
+                    <button class="type-filter-btn" onclick="filterByType('decoration', event)">Decorations</button>
+                    <button class="type-filter-btn" onclick="filterByType('obstacle', event)">Obstacles</button>
+                </div>
+                
+                <input type="text" class="search-box" id="searchBox" placeholder="Search decorations and obstacles..." oninput="searchItems()">
             </div>
             
             <div class="decorations-grid" id="decorationsGrid"></div>
+        </div>
+        
+        <div class="image-error-popup" id="imageErrorPopup">
+            ⚠️ Error loading images - some images might not be displayed
         </div>
     </div>
 
