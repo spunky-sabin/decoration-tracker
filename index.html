@@ -83,6 +83,8 @@
             padding: 20px;
             border-bottom: 1px solid rgba(59, 130, 246, 0.2);
             background: rgba(17, 24, 39, 0.5);
+            position: relative;
+            z-index: 5;
         }
 
         .safety-info {
@@ -173,6 +175,8 @@
             justify-content: center;
             gap: 10px;
             position: relative;
+            min-height: 48px;
+            z-index: 10; /* Ensure button is above other elements */
         }
 
         .analyze-btn:hover:not(:disabled) {
@@ -184,15 +188,18 @@
             opacity: 0.8;
             cursor: not-allowed;
             transform: none;
+            background: linear-gradient(135deg, #64748b 0%, #475569 100%);
         }
 
         .loading-spinner {
-            width: 20px;
-            height: 20px;
+            width: 16px;
+            height: 16px;
             border: 2px solid rgba(255, 255, 255, 0.3);
             border-top: 2px solid white;
             border-radius: 50%;
             animation: buttonSpin 1s linear infinite;
+            display: inline-block;
+            margin-right: 8px;
         }
 
         @keyframes buttonSpin {
@@ -376,11 +383,36 @@
             background: rgba(15, 23, 42, 0.5);
             border: 1px solid rgba(59, 130, 246, 0.2);
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.5s ease;
+            position: relative;
+        }
+
+        .decoration-image::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin: -10px 0 0 -10px;
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            border-top: 2px solid rgba(59, 130, 246, 0.8);
+            border-radius: 50%;
+            animation: imageLoading 1s linear infinite;
+            opacity: 1;
+        }
+
+        .decoration-image.loaded::before {
+            display: none;
         }
 
         .decoration-image.loaded {
             opacity: 1;
+        }
+
+        @keyframes imageLoading {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .decoration-card.missing .decoration-image {
@@ -595,7 +627,6 @@
             </div>
 
             <div class="input-group">
-                
                 <label for="jsonInput">Paste your JSON data here:</label>
                 <textarea id="jsonInput" placeholder='Paste your Clash of Clans JSON data here...'></textarea>
             </div>
@@ -628,8 +659,11 @@
             
             <div class="decorations-grid" id="decorationsGrid"></div>
         </div>
+        
+        <div class="image-error-popup" id="imageErrorPopup">
+            ⚠️ Error loading images - some images might not be displayed
+        </div>
     </div>
-
     <script src="logic.js"></script>
 </body>
 </html>
