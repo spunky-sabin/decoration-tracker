@@ -717,31 +717,105 @@
                 <div id="errorMessage"></div>
             </div>
 
-        <div class="results-section" id="resultsSection">
-            <div class="stats" id="statsContainer"></div>
-            
-            <div class="filter-controls">
-                <div class="filter-row">
-                    <span class="filter-label">Status Filter:</span>
-                    <button class="filter-btn active" onclick="filterItems('all', event)">All</button>
-                    <button class="filter-btn" onclick="filterItems('owned', event)">Owned</button>
-                    <button class="filter-btn" onclick="filterItems('missing', event)">Missing</button>
+            <div class="results-section" id="resultsSection">
+                <div class="stats" id="statsContainer"></div>
+                
+                <div class="filter-controls">
+                    <div class="filter-row">
+                        <span class="filter-label">Status Filter:</span>
+                        <div class="dropdown-container">
+                            <select class="dropdown-select" id="statusFilter" onchange="filterItems(this.value)">
+                                <option value="all">All Items</option>
+                                <option value="owned">Owned Only</option>
+                                <option value="missing">Missing Only</option>
+                            </select>
+                            <span class="dropdown-arrow">▼</span>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-row">
+                        <span class="filter-label">Type Filter:</span>
+                        <div class="dropdown-container">
+                            <select class="dropdown-select" id="typeFilter" onchange="filterByType(this.value)">
+                                <option value="both">Both Types</option>
+                                <option value="decoration">Decorations Only</option>
+                                <option value="obstacle">Obstacles Only</option>
+                            </select>
+                            <span class="dropdown-arrow">▼</span>
+                        </div>
+                    </div>
+                    
+                    <input type="text" class="search-box" id="searchBox" placeholder="Search decorations and obstacles..." oninput="searchItems()">
                 </div>
                 
-                <div class="filter-row">
-                    <span class="filter-label">Type Filter:</span>
-                    <button class="type-filter-btn active" onclick="filterByType('both', event)">Both</button>
-                    <button class="type-filter-btn" onclick="filterByType('decoration', event)">Decorations</button>
-                    <button class="type-filter-btn" onclick="filterByType('obstacle', event)">Obstacles</button>
-                </div>
-                
-                <input type="text" class="search-box" id="searchBox" placeholder="Search decorations and obstacles..." oninput="searchItems()">
+                <div class="decorations-grid" id="decorationsGrid"></div>
             </div>
-            
-            <div class="decorations-grid" id="decorationsGrid"></div>
+        </div>
+
+        <!-- Compare Tab -->
+        <div id="compareTab" class="tab-content">
+            <div class="input-section">
+                <div class="safety-info">
+                    <h3>
+                        <span class="shield-icon">⚖</span>
+                        Compare Two Players
+                    </h3>
+                    <p>Compare decoration and obstacle collections between two players. Paste both JSON files to see <span class="highlight">what each player has that the other doesn't</span> and what they have in common.</p>
+                </div>
+
+                <div class="compare-inputs">
+                    <div class="compare-input-group">
+                        <h3>Player 1 Data</h3>
+                        <textarea id="jsonInput1" placeholder='Paste first player JSON data here...'></textarea>
+                    </div>
+                    <div class="compare-input-group">
+                        <h3>Player 2 Data</h3>
+                        <textarea id="jsonInput2" placeholder='Paste second player JSON data here...'></textarea>
+                    </div>
+                </div>
+                
+                <button class="analyze-btn" onclick="compareDecorations()" id="compareBtn">
+                    <span id="compareBtnText">Compare</span>
+                </button>
+                <div id="compareErrorMessage"></div>
+            </div>
+
+            <div class="results-section" id="compareResultsSection">
+                <div class="stats" id="compareStatsContainer"></div>
+                
+                <div class="filter-controls">
+                    <div class="filter-row">
+                        <span class="filter-label">Show Items:</span>
+                        <div class="dropdown-container">
+                            <select class="dropdown-select" id="compareStatusFilter" onchange="filterCompareItems(this.value)">
+                                <option value="all">All Items</option>
+                                <option value="player1-only">Player 1 Only</option>
+                                <option value="player2-only">Player 2 Only</option>
+                                <option value="both-players">Both Players</option>
+                            </select>
+                            <span class="dropdown-arrow">▼</span>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-row">
+                        <span class="filter-label">Type Filter:</span>
+                        <div class="dropdown-container">
+                            <select class="dropdown-select" id="compareTypeFilter" onchange="filterCompareByType(this.value)">
+                                <option value="both">Both Types</option>
+                                <option value="decoration">Decorations Only</option>
+                                <option value="obstacle">Obstacles Only</option>
+                            </select>
+                            <span class="dropdown-arrow">▼</span>
+                        </div>
+                    </div>
+                    
+                    <input type="text" class="search-box" id="compareSearchBox" placeholder="Search decorations and obstacles..." oninput="searchCompareItems()">
+                </div>
+                
+                <div class="decorations-grid" id="compareDecorationsGrid"></div>
+            </div>
         </div>
     </div>
-
-    <script src="logic.js"></script>
 </body>
 </html>
+<script src="logic.js"> </script>
