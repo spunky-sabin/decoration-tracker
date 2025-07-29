@@ -1,4 +1,4 @@
-let decorationData = {};
+        let decorationData = {};
         let obstacleData = {};
         let userDecorations = new Set();
         let userObstacles = new Set();
