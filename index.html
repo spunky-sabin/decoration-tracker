@@ -590,6 +590,16 @@
             100% { transform: rotate(360deg); }
         }
 
+        /* Smooth scroll to results */
+        .results-highlight {
+            animation: highlightResults 2s ease-out;
+        }
+
+        @keyframes highlightResults {
+            0% { background-color: rgba(59, 130, 246, 0.2); }
+            100% { background-color: transparent; }
+        }
+
         /* Mobile optimizations */
         @media (max-width: 768px) {
             body {
@@ -691,8 +701,8 @@
 
         <!-- Navigation Tabs -->
         <div class="nav-tabs">
-            <button class="nav-tab active" onclick="switchTab('analyze')">Analyze</button>
-            <button class="nav-tab" onclick="switchTab('compare')">Compare</button>
+            <button class="nav-tab active" onclick="switchTab('analyze', event)">Analyze</button>
+            <button class="nav-tab" onclick="switchTab('compare', event)">Compare</button>
         </div>
 
         <!-- Analyze Tab -->
@@ -816,8 +826,8 @@
             </div>
         </div>
     </div>
-<script src="logic.js"></script>
+
+    <script src="logic.js"></script>
+    </script>
 </body>
 </html>
-
-

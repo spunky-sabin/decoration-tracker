@@ -1,3 +1,4 @@
+  // Global variables
         let decorationData = {};
         let obstacleData = {};
         let userDecorations = new Set();
@@ -5,15 +6,15 @@
         let allItems = [];
         let currentFilter = 'all';
         let currentTypeFilter = 'both';
-        let imageObserver;
+        let imageObserver = null;
 
         // Compare specific variables
         let compareItems = [];
         let currentCompareFilter = 'all';
         let currentCompareTypeFilter = 'both';
 
-        // Tab switching
-        function switchTab(tabName) {
+        // Tab switching - Fixed to pass event properly
+        function switchTab(tabName, event) {
             // Update tab buttons
             document.querySelectorAll('.nav-tab').forEach(tab => tab.classList.remove('active'));
             event.target.classList.add('active');
@@ -23,30 +24,34 @@
             document.getElementById(tabName + 'Tab').classList.add('active');
         }
 
-        // Initialize Intersection Observer for lazy loading
+        // Initialize Intersection Observer for lazy loading - Enhanced error handling
         function initImageObserver() {
-            imageObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        if (img.dataset.src && !img.src) {
-                            img.src = img.dataset.src;
-                            img.onload = () => img.classList.add('loaded');
-                            img.onerror = () => {
-                                img.style.display = 'none';
-                                const fallback = document.createElement('div');
-                                fallback.className = 'decoration-image loaded';
-                                fallback.textContent = '✨';
-                                img.parentElement.insertBefore(fallback, img);
-                            };
+            if ('IntersectionObserver' in window) {
+                imageObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            if (img.dataset.src && !img.src) {
+                                img.src = img.dataset.src;
+                                img.onload = () => img.classList.add('loaded');
+                                img.onerror = () => {
+                                    img.style.display = 'none';
+                                    const fallback = document.createElement('div');
+                                    fallback.className = 'decoration-image loaded';
+                                    fallback.textContent = '✨';
+                                    img.parentElement.insertBefore(fallback, img);
+                                };
+                            }
+                            imageObserver.unobserve(img);
                         }
-                        imageObserver.unobserve(img);
-                    }
-                });
-            }, { rootMargin: '50px' });
+                    });
+                }, { rootMargin: '50px' });
+            } else {
+                console.warn('IntersectionObserver not supported, falling back to immediate loading');
+            }
         }
 
-        // Load decoration data
+        // Load decoration data with better error handling
         async function loadDecorationData() {
             try {
                 const response = await fetch('finaldeco_updated.json');
@@ -65,13 +70,15 @@
                 });
                 
                 console.log(`Loaded ${Object.keys(decorationData).length} decorations`);
+                return true;
             } catch (error) {
                 console.error('Error loading decoration data:', error);
                 showError('Failed to load decoration data. Please check if finaldeco_updated.json exists.');
+                return false;
             }
         }
 
-        // Load obstacle data
+        // Load obstacle data with better error handling
         async function loadObstacleData() {
             try {
                 const response = await fetch('obstacles.json');
@@ -90,13 +97,15 @@
                 });
                 
                 console.log(`Loaded ${Object.keys(obstacleData).length} obstacles`);
+                return true;
             } catch (error) {
                 console.error('Error loading obstacle data:', error);
                 showError('Failed to load obstacle data. Please check if obstacles.json exists.');
+                return false;
             }
         }
 
-        // Extract decoration codes from JSON
+        // Extract decoration codes from JSON - Enhanced
         function extractCodesFromJSON(obj, codes = new Set()) {
             if (!obj || typeof obj !== 'object') return codes;
             
@@ -231,7 +240,17 @@
             }
         }
 
-        // Analyze decorations (original function)
+        // Smooth scroll to results with highlight
+        function scrollToResults(isCompare = false) {
+            const resultsSection = document.getElementById(isCompare ? 'compareResultsSection' : 'resultsSection');
+            if (resultsSection) {
+                resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                resultsSection.classList.add('results-highlight');
+                setTimeout(() => resultsSection.classList.remove('results-highlight'), 2000);
+            }
+        }
+
+        // Analyze decorations (enhanced version)
         async function analyzeDecorations() {
             const jsonInput = document.getElementById('jsonInput');
             if (!jsonInput) {
@@ -256,8 +275,7 @@
             setButtonLoading(true);
 
             try {
-                await new Promise(resolve => setTimeout(resolve, 100));
-                
+                // Small delay for UI feedback - reduced from unnecessary setTimeout
                 const parsedJson = JSON.parse(jsonInputValue);
                 const allCodes = extractCodesFromJSON(parsedJson);
                 
@@ -298,6 +316,7 @@
                 
                 setButtonLoading(false);
                 displayResults();
+                scrollToResults(false);
                 
             } catch (error) {
                 console.error("Error parsing JSON:", error);
@@ -311,7 +330,7 @@
             }
         }
 
-        // Compare decorations function
+        // Compare decorations function (enhanced)
         async function compareDecorations() {
             const jsonInput1 = document.getElementById('jsonInput1');
             const jsonInput2 = document.getElementById('jsonInput2');
@@ -339,8 +358,6 @@
             setButtonLoading(true, true);
 
             try {
-                await new Promise(resolve => setTimeout(resolve, 100));
-                
                 const parsedJson1 = JSON.parse(jsonInputValue1);
                 const parsedJson2 = JSON.parse(jsonInputValue2);
                 
@@ -404,6 +421,7 @@
                 
                 setButtonLoading(false, true);
                 displayCompareResults();
+                scrollToResults(true);
                 
             } catch (error) {
                 console.error("Error parsing JSON:", error);
@@ -580,6 +598,10 @@
                 const imgEl = card.querySelector('img');
                 if (imageObserver && imgEl) {
                     imageObserver.observe(imgEl);
+                } else if (imgEl && !imageObserver) {
+                    // Fallback for browsers without IntersectionObserver
+                    imgEl.src = imgEl.dataset.src;
+                    imgEl.onload = () => imgEl.classList.add('loaded');
                 }
 
                 fragment.appendChild(card);
@@ -650,6 +672,10 @@
                 const imgEl = card.querySelector('img');
                 if (imageObserver && imgEl) {
                     imageObserver.observe(imgEl);
+                } else if (imgEl && !imageObserver) {
+                    // Fallback for browsers without IntersectionObserver
+                    imgEl.src = imgEl.dataset.src;
+                    imgEl.onload = () => imgEl.classList.add('loaded');
                 }
 
                 fragment.appendChild(card);
@@ -658,7 +684,7 @@
             grid.appendChild(fragment);
         }
 
-        // Preload images
+        // Preload images with better error handling
         async function preloadImages(items) {
             const promises = items.map(item => {
                 return new Promise(resolve => {
@@ -671,6 +697,9 @@
                         console.warn('Image failed to load:', img.src);
                         resolve();
                     };
+                    
+                    // Add timeout for very slow images
+                    setTimeout(resolve, 5000);
                 });
             });
 
@@ -682,10 +711,20 @@
             try {
                 initImageObserver();
                 
-                await Promise.allSettled([loadDecorationData(), loadObstacleData()]);
+                const [decorationResult, obstacleResult] = await Promise.allSettled([
+                    loadDecorationData(), 
+                    loadObstacleData()
+                ]);
                 
-                if (!Object.keys(decorationData).length && !Object.keys(obstacleData).length) {
+                const decorationSuccess = decorationResult.status === 'fulfilled' && decorationResult.value;
+                const obstacleSuccess = obstacleResult.status === 'fulfilled' && obstacleResult.value;
+                
+                if (!decorationSuccess && !obstacleSuccess) {
                     showError('Failed to load any data files. Please ensure finaldeco_updated.json and obstacles.json are available.');
+                } else if (!decorationSuccess) {
+                    console.warn('Decoration data failed to load, continuing with obstacles only');
+                } else if (!obstacleSuccess) {
+                    console.warn('Obstacle data failed to load, continuing with decorations only');
                 }
                 
             } catch (error) {
