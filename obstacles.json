@@ -404,5 +404,12 @@
     "Code": "8000075",
     "TID": "TID_OBSTACLE_LANTERN_CNY2019",
     "image": "images/obs/Obstacle_BB_Glowy_Lantern.png"
+  },
+  {
+    "SN": 59,
+    "name": "13th Anniversary Cake (2025)",
+    "Code": "8000131",
+    "TID": "TID_OBSTACLE_BIRTHDAY2025",
+    "image": "images/obs/13th_Anniversary_Cake.webp"
   }
 ]
