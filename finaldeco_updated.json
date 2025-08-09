@@ -1016,5 +1016,41 @@
     "TID": "TID_DECORATION_PEKKA_STATUE",
     "name": "Statue of P.E.K.K.A",
     "image": "images/decorations/Decoration_HV_PEKKA_Statue.png"
+  },
+    {
+    "SN": 119,
+    "Name": "Frozen Wizard",
+    "Code": "18000179",
+    "Count": 1,
+    "TID": "TID_DECO_CLASHARAMA_FROZEN_WIZARD_2025",
+    "name": "Frozen Wizard",
+    "image": "images/decorations/Frozen_Wizard.webp"
+  },
+  {
+    "SN": 120,
+    "Name": "clasharama_ep01_super_deco",
+    "Code": "18000180",
+    "Count": 1,
+    "TID": "TID_DECO_CLASHARAMA_EP01_SUPERDECO",
+    "name": "Clashy Carving",
+    "image": "images/decorations/Clashy_Carving.webp"
+  },
+  {
+    "SN": 123,
+    "Name": "CLASHARAMA_SODASTAND_DECO",
+    "Code": "18000183",
+    "Count": 1,
+    "TID": "TID_DECO_CLASHARAMA_SODASTAND_2025",
+    "name": "Soda Stand",
+    "image": "images/decorations/Soda_Stand.webp"
+  },
+  {
+    "SN": 124,
+    "Name": "CLASHARAMA_TABLE_DECO",
+    "Code": "18000184",
+    "Count": 1,
+    "TID": "TID_DECO_CLASHARAMA_TABLE_2025",
+    "name": "Party Bench",
+    "image": "images/decorations/Party_Bench.webp"
   }
 ]
