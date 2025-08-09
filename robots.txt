@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://decotracker.baladhikari.com.np/sitemap.xml
